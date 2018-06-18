@@ -1,26 +1,44 @@
-import { Component, OnDestroy } from '@angular/core';
+import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
-  templateUrl: `home.component.html`,
+  templateUrl: 'home.component.html',
+  styleUrls: ['home.component.css']
 })
 
-export class HomeComponent implements OnDestroy {
+export class HomeComponent {
 
   static URL = 'home';
-
   constructor() {
   }
 
-  /* EJEMPLO PARA ENRUTAR
-  tickets() {
-    this.router.navigate([HomeComponent.URL, TicketsComponent.URL]);
-  }
-  */
+  login(): void {
 
-  ngOnDestroy(): void {
-    // Cerrar todas las subscripciones
   }
 
+  logout(): void{
+
+  }
+
+  profile(): void{
+
+  }
+
+  register(): void{
+
+  }
+
+  home() {
+
+  }
+
+  isAuthenticated(): boolean {
+    return false;
+  }
+
+  getLoginUsuario(): string {
+    return 'user';
+  }
 }
+
