@@ -1,0 +1,31 @@
+<mat-card>
+
+    <mat-dialog-content>
+
+        <mat-card-title>
+            Add Book
+            <mat-icon>add</mat-icon>
+        </mat-card-title>
+
+        <mat-form-field>
+            <input matInput type="string" placeholder="Title" [(ngModel)]="book.title" required />
+        </mat-form-field>
+
+        <mat-form-field>
+            <input matInput type="string" name="image" [(ngModel)]="book.image">
+        </mat-form-field>
+
+    </mat-dialog-content>
+    <mat-dialog-actions>
+
+        <button mat-raised-button mat-dialog-close color="warn">
+            Cancel
+            <mat-icon>close</mat-icon>
+        </button>
+        <button mat-raised-button color="primary" (click)="create()" [disabled]="book.title === ''">
+            Create Item
+        </button>
+
+    </mat-dialog-actions>
+
+</mat-card>
