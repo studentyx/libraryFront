@@ -24,6 +24,7 @@ import {
   MatTabsModule, MatToolbarModule, MatTooltipModule,
   MatStepperModule,
 } from '@angular/material';
+import { BookService } from './shared/book.service';
 
 @NgModule({
   imports: [
@@ -77,8 +78,15 @@ import {
   bootstrap: [AppComponent],
   providers: [
     HttpService,
+    BookService,
   ]
 })
 
 export class AppModule {
 }
+
+
+
+
+
+
