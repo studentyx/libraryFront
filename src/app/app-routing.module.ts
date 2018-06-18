@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { HomeComponent } from './home/home.component';
 import { Routes, RouterModule } from '@angular/router';
 import { LibraryBooksComponent } from './libraryBooks/libraryBooks.component';
+import { CreateBookDialogComponent } from './libraryBooks/createBookDialog/createBookDialog.component';
 
 const appRoutes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: HomeComponent.URL + '/' + LibraryBooksComponent.URL },
@@ -25,7 +26,7 @@ export class AppRoutingModule {
   ];
 
   static DIALOGS_COMPONENTS = [
-    // Declaracion de DIALOGOS
+    CreateBookDialogComponent,
   ];
 }
 
