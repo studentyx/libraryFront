@@ -1,4 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
+import {Router} from '@angular/router';
 import { BookService } from '../shared/book.service';
 import { Book } from '../shared/book.model';
 
@@ -21,7 +22,8 @@ export class LibraryBooksComponent implements OnInit {
     @ViewChild(MatPaginator) paginator: MatPaginator;
     @ViewChild(MatSort) sort: MatSort;
 
-    constructor(private dialog: MatDialog, private bookService: BookService) {
+    constructor(private router: Router, 
+        private dialog: MatDialog, private bookService: BookService) {
     }
 
     ngOnInit(): void {
@@ -49,6 +51,7 @@ export class LibraryBooksComponent implements OnInit {
     }
 
     detailsBook(id: string) {
+        this.router.navigate( ['home/bookDetails', id ] );
     }
 
 }

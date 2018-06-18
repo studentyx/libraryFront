@@ -1,0 +1,29 @@
+<h1> {{book.title}} </h1>
+
+<div fxLayout="row" fxLayoutWrap fxFill fxLayoutAlign="start start" fxLayoutGap="10px">
+  
+  <div fxFlex="30%">
+    <div class="info-card-container">
+      <img class="bookDetailsImage" src="{{book.image}}">
+
+      <span *ngFor="let genre of book.genre">
+        <p>
+          <a [routerLink]="['/home/libraryBooks']" [queryParams]="{ 'genre': genre }">{{genre}}</a>
+        </p>
+      </span>
+
+      <span *ngFor="let tag of book.tags">
+        <p>
+          <a [routerLink]="['/home/libraryBooks']" [queryParams]="{ 'tags': tag }">{{tag}}</a>
+        </p>
+      </span>
+
+    </div>
+  </div>
+
+
+  <div fxFlex="50%">
+    <span style="white-space:pre-wrap;"> {{book.description}} </span>
+  </div>
+  
+</div>
