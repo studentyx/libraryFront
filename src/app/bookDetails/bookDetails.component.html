@@ -1,29 +1,78 @@
 <h1> {{book.title}} </h1>
 
 <div fxLayout="row" fxLayoutWrap fxFill fxLayoutAlign="start start" fxLayoutGap="10px">
-  
+
   <div fxFlex="30%">
     <div class="info-card-container">
       <img class="bookDetailsImage" src="{{book.image}}">
 
-      <span *ngFor="let genre of book.genre">
-        <p>
-          <a [routerLink]="['/home/libraryBooks']" [queryParams]="{ 'genre': genre }">{{genre}}</a>
-        </p>
-      </span>
+      <!-- Genre -->
+      <div *ngIf="editPropertyActive('genre'); then genreEdit; else genreShow"></div>
+      <ng-template #genreShow>
+        <h3> Genre
+          <button (click)="editProperty('genre')">Edit</button>
+        </h3>
+        <span *ngFor="let genre of book.genre">
+          <p>
+            <a [routerLink]="['/home/libraryBooks']" [queryParams]="{ 'genre': genre }">{{genre}}</a>
+          </p>
+        </span>
+      </ng-template>
+      <ng-template #genreEdit>
+        <h3> Genre
+          <button (click)="saveProperty()">Save</button>
+          <button (click)="cancelProperty()">Cancel</button>
+        </h3>
+        <textarea matInput type="string" name="genre" [(ngModel)]="genreUpdate" placeholder="Genre">
+        </textarea>
+      </ng-template>
 
-      <span *ngFor="let tag of book.tags">
-        <p>
-          <a [routerLink]="['/home/libraryBooks']" [queryParams]="{ 'tags': tag }">{{tag}}</a>
-        </p>
-      </span>
+      <!-- Tags -->
+      <div *ngIf="editPropertyActive('tags'); then tagsEdit; else tagsShow"></div>
+      <ng-template #tagsShow>
+        <h3> Genre
+          <button (click)="editProperty('tags')">Edit</button>
+        </h3>
+        <span *ngFor="let tag of book.tags">
+          <p>
+            <a [routerLink]="['/home/libraryBooks']" [queryParams]="{ 'tags': tag }">{{tag}}</a>
+          </p>
+        </span>
+      </ng-template>
+      <ng-template #tagsEdit>
+        <h3> Tags
+          <button (click)="saveProperty()">Save</button>
+          <button (click)="cancelProperty()">Cancel</button>
+        </h3>
+        <textarea matInput type="string" name="genre" [(ngModel)]="tagsUpdate" placeholder="Tags">
+        </textarea>
+      </ng-template>
+
 
     </div>
   </div>
 
 
   <div fxFlex="50%">
-    <span style="white-space:pre-wrap;"> {{book.description}} </span>
+
+    <!-- Description -->
+    <div *ngIf="editPropertyActive('description'); then descriptionEdit; else descriptionShow"></div>
+    <ng-template #descriptionShow>
+      <h3> Description
+        <button (click)="editProperty('description')">Edit</button>
+      </h3>
+      <span style="white-space:pre-wrap;"> {{book.description}} </span>
+    </ng-template>
+    <ng-template #descriptionEdit>
+      <h3> Description
+        <button (click)="saveProperty()">Save</button>
+        <button (click)="cancelProperty()">Cancel</button>
+      </h3>
+      <textarea matInput type="string" name="description" [(ngModel)]="book.description" placeholder="Description">
+  </textarea>
+    </ng-template>
+
+
   </div>
-  
+
 </div>
