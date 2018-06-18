@@ -1,14 +1,14 @@
 import { NgModule } from '@angular/core';
 import { HomeComponent } from './home/home.component';
 import { Routes, RouterModule } from '@angular/router';
+import { LibraryBooksComponent } from './libraryBooks/libraryBooks.component';
 
 const appRoutes: Routes = [
-  { path: '', pathMatch: 'full', redirectTo: HomeComponent.URL },
+  { path: '', pathMatch: 'full', redirectTo: HomeComponent.URL + '/' + LibraryBooksComponent.URL },
   {
     path: HomeComponent.URL, component: HomeComponent,
     children: [
-      // Declaracion de RUTAS
-      // { path: TicketsComponent.URL, component: TicketsComponent }, <-- Ejemplo
+      { path: LibraryBooksComponent.URL, component: LibraryBooksComponent },
     ]
   }
 ];
@@ -20,11 +20,12 @@ const appRoutes: Routes = [
 
 export class AppRoutingModule {
   static COMPONENTS = [
-    // Declaracion de COMPONENTES
     HomeComponent,
+    LibraryBooksComponent,
   ];
 
   static DIALOGS_COMPONENTS = [
     // Declaracion de DIALOGOS
   ];
 }
+
