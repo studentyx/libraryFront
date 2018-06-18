@@ -1,2 +1,34 @@
-<h1>HomeComponent</h1>
-<router-outlet></router-outlet>
+<mat-toolbar color="primary">
+    <h1>
+      Library
+    </h1>
+    <button mat-button (click)="home()">
+  
+      <img src="../../assets/library.png">
+    </button>
+  
+    <span class="span-aling-spacer"></span>
+    <div *ngIf="isAuthenticated(); then userLogin; else buttonLogin"></div>
+    <ng-template #userLogin>
+      <button mat-button (click)="profile()">
+        <span>{{getLoginUsuario()}}</span>
+        <mat-icon>person_outline</mat-icon>
+      </button>
+      <button mat-button (click)="logout()">
+        <span>Logout</span>
+        <mat-icon>close</mat-icon>
+      </button>
+    </ng-template>
+    <ng-template #buttonLogin>
+      <button mat-button (click)="register()">
+        <span>Register</span>
+        <mat-icon>account_box</mat-icon>
+      </button>
+      <button mat-button (click)="login()">
+        <span>Iniciar sesión</span>
+        <mat-icon>person_outline</mat-icon>
+      </button>
+    </ng-template>
+  </mat-toolbar>
+  
+  <router-outlet></router-outlet>
