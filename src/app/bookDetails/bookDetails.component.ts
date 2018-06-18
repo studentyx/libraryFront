@@ -44,7 +44,6 @@ export class BookDetailsComponent implements OnInit {
 
     editProperty( propertyKey: string ){
         this.propertyString = propertyKey;
-        console.log( this.propertyString );
     }
 
     cancelProperty(){
