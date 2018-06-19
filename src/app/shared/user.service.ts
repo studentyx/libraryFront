@@ -59,8 +59,8 @@ export class UserService {
     return this.httpService.get(UserService.END_POINT);
   }
 
-  read(usuario: string): Observable<User> {
-    return this.httpService.get(UserService.END_POINT + '/' + usuario).map(
+  read(username: string): Observable<User> {
+    return this.httpService.get(UserService.END_POINT + '/' + username).map(
       data => {
         return data;
       }
@@ -68,7 +68,7 @@ export class UserService {
   }
 
   update(user: User): Observable<User> {
-    return this.httpService.put(UserService.END_POINT + '/' + user.usuario, user).map(data => {
+    return this.httpService.put(UserService.END_POINT + '/' + user.username, user).map(data => {
       return data;
     });
   }
