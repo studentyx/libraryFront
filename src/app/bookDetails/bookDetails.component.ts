@@ -6,6 +6,8 @@ import { ReviewService } from '../shared/review.service';
 import { Review } from '../shared/review.model';
 import { UserService } from '../shared/user.service';
 
+import { MatPaginator, MatSort, MatTableDataSource } from '@angular/material';
+
 @Component({
     templateUrl: 'bookDetails.component.html',
     styleUrls: ['bookDetails.component.css']
@@ -14,6 +16,13 @@ import { UserService } from '../shared/user.service';
 export class BookDetailsComponent implements OnInit {
 
     static URL = 'bookDetails/:id';
+
+    title = 'Reviews by users';
+    displayedColumns = ['review'];
+
+    dataSource = new MatTableDataSource<Review>();
+    @ViewChild(MatPaginator) paginator: MatPaginator;
+    @ViewChild(MatSort) sort: MatSort;
 
     bookId: string;
     book: Book;
@@ -50,11 +59,15 @@ export class BookDetailsComponent implements OnInit {
             this.reviewService.setBook(this.bookId);
 
             this.reviewService.getAllReviews().subscribe(reviewData => {
-                this.reviews = reviewData;
+                this.dataSource.data = reviewData;
+                this.dataSource.sort = this.sort;
+                this.dataSource.paginator = this.paginator;
+                //this.reviews = reviewData;
             });
 
 
         });
+
     }
 
     postReview(){
