@@ -1,5 +1,11 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { LibraryBooksComponent } from '../libraryBooks/libraryBooks.component';
+import { UserService } from '../shared/user.service';
+import { LoginComponent } from './login/login-dialog.component';
+import { MatDialog } from '@angular/material';
+import { SignUpComponent } from '../user/signUp/signUp.component';
+import { ProfileComponent } from '../user/profile/profile.component';
 
 @Component({
   selector: 'app-home',
@@ -10,35 +16,43 @@ import { Router } from '@angular/router';
 export class HomeComponent {
 
   static URL = 'home';
-  constructor() {
+  constructor(
+    private loginDialog: MatDialog,
+    private router: Router,
+    private userService: UserService) {
+
   }
 
   login(): void {
-
+    const dialogRef = this.loginDialog.open(LoginComponent, {
+      width: '250px'
+    });
   }
 
-  logout(): void{
-
+  logout(): void {
+    this.userService.logout();
+    this.home();
   }
 
-  profile(): void{
-
+  profile(): void {
+    this.router.navigate([HomeComponent.URL, ProfileComponent.URL])
   }
 
-  register(): void{
-
+  register(): void {
+    this.router.navigate([HomeComponent.URL, SignUpComponent.URL])
   }
 
   home() {
-
+    this.router.navigate([HomeComponent.URL, LibraryBooksComponent.URL]);
   }
 
   isAuthenticated(): boolean {
-    return false;
+    return this.userService.isAuthenticated();
   }
 
   getLoginUsuario(): string {
-    return 'user';
+    return this.userService.getLoginUser();
   }
 }
+
 
