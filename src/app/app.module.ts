@@ -26,6 +26,7 @@ import {
 } from '@angular/material';
 import { BookService } from './shared/book.service';
 import { UserService } from './shared/user.service';
+import { ReviewService } from './shared/review.service';
 
 @NgModule({
   imports: [
@@ -81,6 +82,7 @@ import { UserService } from './shared/user.service';
     HttpService,
     BookService,
     UserService,
+    ReviewService,
   ]
 })
 
