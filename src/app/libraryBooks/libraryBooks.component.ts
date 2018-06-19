@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import {Router} from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { BookService } from '../shared/book.service';
 import { Book } from '../shared/book.model';
 
@@ -22,11 +22,15 @@ export class LibraryBooksComponent implements OnInit {
     @ViewChild(MatPaginator) paginator: MatPaginator;
     @ViewChild(MatSort) sort: MatSort;
 
-    constructor(private router: Router, 
+    constructor(private router: Router, private route: ActivatedRoute,
         private dialog: MatDialog, private bookService: BookService) {
     }
 
     ngOnInit(): void {
+        this.route.queryParams.subscribe(params => {
+            this.bookService.setGenre(params['genre']);
+            this.bookService.setTag(params['tags']);
+        });
         this.synchronize();
     }
 
@@ -51,7 +55,7 @@ export class LibraryBooksComponent implements OnInit {
     }
 
     detailsBook(id: string) {
-        this.router.navigate( ['home/bookDetails', id ] );
+        this.router.navigate(['home/bookDetails', id]);
     }
 
 }
