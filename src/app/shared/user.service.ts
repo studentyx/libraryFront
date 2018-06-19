@@ -11,8 +11,9 @@ export class UserService {
 
   private token: string;
   private username: string;
+  private rol: string;
 
-  constructor(private httpService: HttpService) {
+  constructor(private httpService: HttpService) {    
   }
 
   isAuthenticated(): boolean {
@@ -23,6 +24,15 @@ export class UserService {
     return this.username;
   }
 
+  getRol(): string{
+    if ( this.rol === undefined && this.getLoginUser() !== undefined ){
+      this.read( this.getLoginUser() ).subscribe( data => {
+        this.rol = data.rol;
+      });
+    }
+    return this.rol;
+  }
+
   login(username: string, password: string): Observable<boolean> {
     const user: User = { username: username, password: password };
 
@@ -31,20 +41,19 @@ export class UserService {
         this.token = res.token;
         this.httpService.setToken( this.token );
         this.username = username;
-        return this.token != null;
+        return this.token !== undefined;
       },
       error => {
-        this.token = null;
-        this.httpService.setToken( this.token );
-        this.username = null;
+        this.logout();
       },
     );
   }
 
   logout(): void {
-    this.token = null;
+    this.token = undefined;
     this.httpService.setToken( this.token );
-    this.username = null;
+    this.username = undefined;
+    this.rol = undefined;
   }
 
   create(user: User): Observable<boolean> {
