@@ -5,6 +5,7 @@ import { LibraryBooksComponent } from './libraryBooks/libraryBooks.component';
 import { CreateBookDialogComponent } from './libraryBooks/createBookDialog/createBookDialog.component';
 import { BookDetailsComponent } from './bookDetails/bookDetails.component';
 import { LoginComponent } from './home/login/login-dialog.component';
+import { SignUpComponent } from './user/signUp/signUp.component';
 
 const appRoutes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: HomeComponent.URL + '/' + LibraryBooksComponent.URL },
@@ -13,6 +14,7 @@ const appRoutes: Routes = [
     children: [
       { path: LibraryBooksComponent.URL, component: LibraryBooksComponent },
       { path: BookDetailsComponent.URL, component: BookDetailsComponent },
+      { path: SignUpComponent.URL, component: SignUpComponent },
     ]
   }
 ];
@@ -27,6 +29,7 @@ export class AppRoutingModule {
     HomeComponent,
     LibraryBooksComponent, 
     BookDetailsComponent,
+    SignUpComponent,
   ];
 
   static DIALOGS_COMPONENTS = [
