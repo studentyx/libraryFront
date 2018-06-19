@@ -122,7 +122,7 @@ export class BookDetailsComponent implements OnInit {
     }
 
     editPropertyActive(property: string) {
-        return this.propertyString === property;
+        return this.userService.isAuthenticated() && this.propertyString === property;
     }
 
 

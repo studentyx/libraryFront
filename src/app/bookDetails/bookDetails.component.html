@@ -10,7 +10,7 @@
       <div *ngIf="editPropertyActive('genre'); then genreEdit; else genreShow"></div>
       <ng-template #genreShow>
         <h3> Genre
-          <button (click)="editProperty('genre')">Edit</button>
+          <button *ngIf="userService.isAuthenticated()" (click)="editProperty('genre')">Edit</button>
         </h3>
         <span *ngFor="let genre of book.genre">
           <p>
@@ -31,7 +31,7 @@
       <div *ngIf="editPropertyActive('tags'); then tagsEdit; else tagsShow"></div>
       <ng-template #tagsShow>
         <h3> Tags
-          <button (click)="editProperty('tags')">Edit</button>
+          <button *ngIf="userService.isAuthenticated()" (click)="editProperty('tags')">Edit</button>
         </h3>
         <span *ngFor="let tag of book.tags">
           <p>
@@ -59,7 +59,7 @@
     <div *ngIf="editPropertyActive('description'); then descriptionEdit; else descriptionShow"></div>
     <ng-template #descriptionShow>
       <h3> Description
-        <button (click)="editProperty('description')">Edit</button>
+        <button *ngIf="userService.isAuthenticated()" (click)="editProperty('description')">Edit</button>
       </h3>
       <span style="white-space:pre-wrap;"> {{book.description}} </span>
     </ng-template>
