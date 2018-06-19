@@ -10,7 +10,18 @@ export class BookService {
   static END_POINT = '/books';
   private books: Subject<Book[]> = new Subject();
 
+  private genre: string = undefined;
+  private tags: string = undefined;
+
   constructor(private httpService: HttpService) {
+  }
+
+  setGenre(genre: string): void{
+    this.genre = genre;
+  }
+
+  setTag( tag: string ): void{
+    this.tags = tag;
   }
 
   getAllBooks(): Observable<Book[]> {
@@ -19,7 +30,7 @@ export class BookService {
   }
 
   private readAll(): void {
-    this.httpService.get(BookService.END_POINT).subscribe(
+    this.httpService.param( "genre", this.genre ).param( "tags", this.tags ).get(BookService.END_POINT).subscribe(
       (booksArray: Book[]) => this.books.next(booksArray),
     );
   }

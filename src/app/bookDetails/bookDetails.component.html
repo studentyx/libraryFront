@@ -30,7 +30,7 @@
       <!-- Tags -->
       <div *ngIf="editPropertyActive('tags'); then tagsEdit; else tagsShow"></div>
       <ng-template #tagsShow>
-        <h3> Genre
+        <h3> Tags
           <button (click)="editProperty('tags')">Edit</button>
         </h3>
         <span *ngFor="let tag of book.tags">
