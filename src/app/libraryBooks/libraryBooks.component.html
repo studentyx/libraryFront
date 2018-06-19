@@ -3,38 +3,47 @@
   <mat-icon>add</mat-icon>
 </button>
 
-<div class="angContainer mat-elevation-z8">
-  <mat-table #table [dataSource]="dataSource" matSort>
+<mat-card>
+    <mat-card-title>
+    {{title}}
+  </mat-card-title>
+  <mat-card-content>
 
-    <ng-container matColumnDef="image">
-      <mat-header-cell *matHeaderCellDef mat-sort-header> Image </mat-header-cell>
-      <mat-cell *matCellDef="let row">
-        <img class="bookImage" mat-card-image src="{{row.image}}"> </mat-cell>
-    </ng-container>
+    <mat-table #table [dataSource]="dataSource" matSort>
 
-    <ng-container matColumnDef="title">
-      <mat-header-cell *matHeaderCellDef mat-sort-header>Title </mat-header-cell>
-      <mat-cell *matCellDef="let row"> {{row.title}} </mat-cell>
-    </ng-container>
+      <ng-container matColumnDef="image">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Image </mat-header-cell>
+        <mat-cell *matCellDef="let row">
+          <img class="bookImage" mat-card-image src="{{row.image}}"> </mat-cell>
+      </ng-container>
 
-    <ng-container matColumnDef="actions">
-      <mat-header-cell *matHeaderCellDef mat-sort-header> Actions </mat-header-cell>
-      <mat-cell *matCellDef="let row">
+      <ng-container matColumnDef="title">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Title </mat-header-cell>
+        <mat-cell *matCellDef="let row"> {{row.title}} </mat-cell>
+      </ng-container>
 
-        <button mat-raised-button color="accent" (click)="detailsBook(row._id)">Details
-          <mat-icon>details</mat-icon>
-        </button>
-        <button mat-raised-button color="warn" (click)="deleteBook(row._id)">Delete
-          <mat-icon>delete</mat-icon>
-        </button>
-      </mat-cell>
+      <ng-container matColumnDef="actions">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Actions </mat-header-cell>
+        <mat-cell *matCellDef="let row">
 
-    </ng-container>
+          <button mat-raised-button color="accent" (click)="detailsBook(row._id)">Details
+            <mat-icon>details</mat-icon>
+          </button>
+          <button mat-raised-button color="warn" (click)="deleteBook(row._id)">Delete
+            <mat-icon>delete</mat-icon>
+          </button>
+        </mat-cell>
 
-    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
-  </mat-table>
+      </ng-container>
 
-  <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
 
-</div>
+    <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+
+  </mat-card-content>
+
+
+</mat-card>
+
