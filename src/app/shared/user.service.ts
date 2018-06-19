@@ -29,11 +29,13 @@ export class UserService {
     return this.httpService.post(UserService.LOGIN_END_POINT, user).map(
       res => {
         this.token = res.token;
+        this.httpService.setToken( this.token );
         this.username = username;
         return this.token != null;
       },
       error => {
         this.token = null;
+        this.httpService.setToken( this.token );
         this.username = null;
       },
     );
@@ -41,6 +43,7 @@ export class UserService {
 
   logout(): void {
     this.token = null;
+    this.httpService.setToken( this.token );
     this.username = null;
   }
 
