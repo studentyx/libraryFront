@@ -16,6 +16,7 @@ export class LibraryBooksComponent implements OnInit {
 
     static URL = 'libraryBooks';
 
+    title = 'Library Books';
     displayedColumns = ['image', 'title', 'actions'];
     dataSource = new MatTableDataSource<Book>();
 
