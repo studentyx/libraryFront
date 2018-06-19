@@ -25,6 +25,7 @@ import {
   MatStepperModule,
 } from '@angular/material';
 import { BookService } from './shared/book.service';
+import { UserService } from './shared/user.service';
 
 @NgModule({
   imports: [
@@ -79,6 +80,7 @@ import { BookService } from './shared/book.service';
   providers: [
     HttpService,
     BookService,
+    UserService,
   ]
 })
 

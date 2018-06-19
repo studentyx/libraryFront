@@ -1,0 +1,20 @@
+h1{
+    text-align: center;
+    margin-bottom: 40px;
+    padding: 10px;
+    border: 5px solid #da2360;
+}
+
+.bookDetailsImage{
+    width: 300px;
+    height: auto;
+  }
+
+.mat-raised-button{
+    width: 100%;
+    margin: 20px;
+}
+
+mat-form-field{
+    margin: 20px;
+}

@@ -1,0 +1,44 @@
+<div fxLayout="row" fxLayoutWrap fxFill fxLayoutAlign="start start" fxLayoutGap="10px">
+
+  <div fxFlex="25%"></div>
+  <div fxFlex>
+
+    <mat-card>
+
+      <mat-card-title>
+        Register
+
+      </mat-card-title>
+
+      <mat-card-content>
+
+        <mat-form-field>
+          <input matInput placeholder="Username" [(ngModel)]="user.username">
+        </mat-form-field>
+
+        <mat-form-field>
+          <input matInput placeholder="E-mail" [(ngModel)]="user.email">
+        </mat-form-field>
+
+        <mat-form-field>
+          <input matInput placeholder="Password" [(ngModel)]="user.password">
+        </mat-form-field>
+
+        <mat-form-field>
+          <input matInput placeholder="Confirm Password" [(ngModel)]="confirmPassword">
+        </mat-form-field>
+
+        <button mat-raised-button color="primary" (click)="register()">
+          Register
+        </button>
+
+      </mat-card-content>
+
+    </mat-card>
+
+  </div>
+  <div fxFlex="25%"></div>
+
+
+
+</div>
