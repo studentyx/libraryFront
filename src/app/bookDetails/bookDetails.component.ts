@@ -76,7 +76,8 @@ export class BookDetailsComponent implements OnInit {
     }
 
     reviewOwner( review: Review ){
-        return this.userService.isAuthenticated() && this.userService.getLoginUser() === review.user.username;
+        return this.userService.isAuthenticated() 
+        && ( this.userService.getRol() === 'admin' || this.userService.getLoginUser() === review.user.username );
     }
 
 
@@ -93,6 +94,12 @@ export class BookDetailsComponent implements OnInit {
 
     cancelReview( review: Review ){
         this.reviewEdit = undefined;
+    }
+
+    deleteReview( review: Review ){
+        if (confirm("Are you sure you want to delete this review?")) {
+            this.reviewService.delete(review._id).subscribe();
+        }
     }
 
 
@@ -122,7 +129,7 @@ export class BookDetailsComponent implements OnInit {
     }
 
     editPropertyActive(property: string) {
-        return this.propertyString === property;
+        return this.userService.isAuthenticated() && this.propertyString === property;
     }
 
 

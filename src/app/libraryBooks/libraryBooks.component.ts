@@ -6,6 +6,7 @@ import { Book } from '../shared/book.model';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { MatPaginator, MatSort, MatTableDataSource } from '@angular/material';
 import { CreateBookDialogComponent } from './createBookDialog/createBookDialog.component';
+import { UserService } from '../shared/user.service';
 
 @Component({
     templateUrl: 'libraryBooks.component.html',
@@ -24,7 +25,8 @@ export class LibraryBooksComponent implements OnInit {
     @ViewChild(MatSort) sort: MatSort;
 
     constructor(private router: Router, private route: ActivatedRoute,
-        private dialog: MatDialog, private bookService: BookService) {
+        private dialog: MatDialog,
+        private bookService: BookService, private userService: UserService) {
     }
 
     ngOnInit(): void {
@@ -57,6 +59,11 @@ export class LibraryBooksComponent implements OnInit {
 
     detailsBook(id: string) {
         this.router.navigate(['home/bookDetails', id]);
+    }
+
+    manageBookPrivileges(){
+        let rol = this.userService.getRol();
+        return rol == 'admin' || rol == 'bookManager';
     }
 
 }

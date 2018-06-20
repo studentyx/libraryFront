@@ -31,7 +31,10 @@ export class HomeComponent {
 
   logout(): void {
     this.userService.logout();
-    this.home();
+    if (this.router.url === '/home/profile' ) {
+      this.home();
+    }
+
   }
 
   profile(): void {
