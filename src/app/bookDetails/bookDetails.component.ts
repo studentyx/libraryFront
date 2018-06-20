@@ -76,7 +76,8 @@ export class BookDetailsComponent implements OnInit {
     }
 
     reviewOwner( review: Review ){
-        return this.userService.isAuthenticated() && this.userService.getLoginUser() === review.user.username;
+        return this.userService.isAuthenticated() 
+        && ( this.userService.getRol() === 'admin' || this.userService.getLoginUser() === review.user.username );
     }
 
 
