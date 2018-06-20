@@ -96,6 +96,12 @@ export class BookDetailsComponent implements OnInit {
         this.reviewEdit = undefined;
     }
 
+    deleteReview( review: Review ){
+        if (confirm("Are you sure you want to delete this review?")) {
+            this.reviewService.delete(review._id).subscribe();
+        }
+    }
+
 
 
 

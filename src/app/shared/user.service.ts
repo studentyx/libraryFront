@@ -25,11 +25,6 @@ export class UserService {
   }
 
   getRol(): string{
-    if ( this.rol === undefined && this.getLoginUser() !== undefined ){
-      this.read( this.getLoginUser() ).subscribe( data => {
-        this.rol = data.rol;
-      });
-    }
     return this.rol;
   }
 
@@ -41,6 +36,9 @@ export class UserService {
         this.token = res.token;
         this.httpService.setToken( this.token );
         this.username = username;
+        this.read( this.username ).subscribe( data => {
+          this.rol = data.rol;
+        });
         return this.token !== undefined;
       },
       error => {
