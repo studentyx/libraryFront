@@ -11,6 +11,9 @@ import { NgModule } from '@angular/core';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { HttpService } from './core/http.service';
 
+import { RecaptchaModule } from 'ng-recaptcha';
+
+
 import {
   MatAutocompleteModule, MatButtonModule, MatButtonToggleModule,
   MatCardModule, MatCheckboxModule, MatChipsModule,
@@ -70,6 +73,8 @@ import { ReviewService } from './shared/review.service';
     MatToolbarModule,
     MatTooltipModule,
     ReactiveFormsModule,
+
+    RecaptchaModule.forRoot(),
   ],
   declarations: [
     AppComponent,

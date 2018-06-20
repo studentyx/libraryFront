@@ -13,9 +13,12 @@ export class SignUpComponent {
     user: User;
     confirmPassword: string;
 
+    recaptcha: string;
+
     constructor(private userService: UserService) {
         this.user = { username: "diego", password: "diego" };
         this.confirmPassword = "";
+        this.recaptcha = undefined;
     }
 
     private validateRegister(): boolean {
@@ -30,8 +33,14 @@ export class SignUpComponent {
 
     register() {
         if (this.validateRegister()) {
-            this.userService.create(this.user).subscribe();
+            this.userService.create(this.user, this.recaptcha ).subscribe();
         }
     }
+
+    public resolved(captchaResponse: string) {
+        console.log( "google recaptcha" );
+        console.log(`Resolved captcha with response ${captchaResponse}:`);
+        this.recaptcha = captchaResponse;
+      }
 
 }
