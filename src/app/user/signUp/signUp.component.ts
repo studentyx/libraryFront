@@ -38,8 +38,6 @@ export class SignUpComponent {
     }
 
     public resolved(captchaResponse: string) {
-        console.log( "google recaptcha" );
-        console.log(`Resolved captcha with response ${captchaResponse}:`);
         this.recaptcha = captchaResponse;
       }
 
