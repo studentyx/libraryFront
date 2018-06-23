@@ -7,6 +7,7 @@ import { BookDetailsComponent } from './bookDetails/bookDetails.component';
 import { LoginComponent } from './home/login/login-dialog.component';
 import { SignUpComponent } from './user/signUp/signUp.component';
 import { ProfileComponent } from './user/profile/profile.component';
+import { RegisterDialogComponent } from './user/registerDialog/registerDialog.component';
 
 const appRoutes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: HomeComponent.URL + '/' + LibraryBooksComponent.URL },
@@ -38,6 +39,7 @@ export class AppRoutingModule {
   static DIALOGS_COMPONENTS = [
     CreateBookDialogComponent,
     LoginComponent,
+    RegisterDialogComponent,
   ];
 }
 
