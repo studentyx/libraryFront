@@ -2,7 +2,8 @@ import { Component } from '@angular/core';
 import { UserService } from '../../shared/user.service';
 import { User } from '../../shared/user.model';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-
+import { MatSnackBar, MatDialogRef } from '@angular/material';
+import { Observable } from 'rxjs/Observable';
 
 @Component({
     selector: 'app-registerDialog',
@@ -28,29 +29,27 @@ export class RegisterDialogComponent {
         repeatPassword: this.repeatPassword = new FormControl('', [Validators.required]),
     });
 
-    constructor(private userService: UserService) {
+    constructor(private userService: UserService,
+        private dialogRef: MatDialogRef<RegisterDialogComponent>, private snackBar: MatSnackBar) {
         this.user = { username: "diego", password: "diego" };
         this.confirmPassword = "";
         this.recaptcha = undefined;
     }
 
-
-
     public resolved(captchaResponse: string) {
         this.recaptcha = captchaResponse;
     }
 
-    nonEqualPasswords() {
+    nonEqualPasswords(): boolean {
         return this.user.password !== this.confirmPassword;
     }
 
     invalidRegisterData() {
-
         let result: boolean = false;
 
-        if ( this.registerForm.get('username').invalid || this.registerForm.get('password').invalid || this.registerForm.get('email').invalid ) {
+        if (this.registerForm.get('username').invalid || this.registerForm.get('password').invalid || this.registerForm.get('email').invalid) {
             result = true;
-        } else if ( this.nonEqualPasswords() ) {
+        } else if (this.nonEqualPasswords()) {
             result = true;
         } else if (this.recaptcha === undefined) {
             result = true;
@@ -60,8 +59,24 @@ export class RegisterDialogComponent {
     }
 
     register() {
-        this.userService.create(this.user, this.recaptcha).subscribe();
+        if (this.usernameAlreadyExist()) {
+            this.snackbarMessage( "The username is already taken" );
+        } else {
+            this.userService.create(this.user, this.recaptcha).subscribe();
+            this.dialogRef.close();
+            this.snackbarMessage( "User created successfully" );
+        }
     }
 
+    usernameAlreadyExist(): boolean {
+        let user = this.userService.read( this.user.username ).subscribe();
+        return user !== null;
+    }
+
+    snackbarMessage( message: string ): void {
+        this.snackBar.open( message, 'Message', {
+            duration: 8000
+        });
+    }
 
 }

@@ -29,6 +29,8 @@
                 <mat-error *ngIf="email.invalid">The email is invalid</mat-error>
             </mat-form-field>
 
+            <re-captcha (resolved)="resolved($event)" siteKey="6Lc4AGAUAAAAABZvwu3ZqErFbQjqm9Yfm5yvjew9"></re-captcha>
+
         </mat-dialog-content>
         <mat-dialog-actions align="center">
 
