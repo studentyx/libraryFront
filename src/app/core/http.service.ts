@@ -103,8 +103,12 @@ export class HttpService {
     }
 
     private extractData(response: Response): any {
+
         const contentType = response.headers.get('content-type');
-        if (contentType) {
+
+        if ( contentType === null ){
+            return null;
+        }else  if (contentType) {
             if (contentType.indexOf('application/pdf') !== -1) {
                 return new Blob([response.blob()], { type: 'application/pdf' });
             } else if (contentType.indexOf('application/json') !== -1) {
