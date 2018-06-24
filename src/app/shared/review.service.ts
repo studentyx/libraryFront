@@ -25,7 +25,7 @@ export class ReviewService {
     }
 
     readAll(): void {
-        this.httpService.param("book._id", this.bookId).get(ReviewService.END_POINT).subscribe(
+        this.httpService.param("book", this.bookId).get(ReviewService.END_POINT).subscribe(
             (reviewsArray: Review[]) => this.reviews.next(reviewsArray),
         );
     }
