@@ -13,9 +13,6 @@ export class ProfileComponent implements OnInit {
     static URL = 'profile';
     user: User;
 
-    propertyString: string;
-
-
     constructor(private userService: UserService, private router: Router) {
         this.user = { username: "", password: "" };
     }
@@ -34,22 +31,9 @@ export class ProfileComponent implements OnInit {
         });
     }
 
-    editProperty(propertyKey: string) {
-        this.propertyString = propertyKey;
-    }
-
-    cancelProperty() {
-        this.propertyString = '';
-    }
-
-    saveProperty() {
-        this.propertyString = '';
-
+    saveProperty(){
         this.userService.update(this.user).subscribe();
     }
 
-    editPropertyActive(property: string) {
-        return this.propertyString === property;
-    }
 
 }

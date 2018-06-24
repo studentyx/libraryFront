@@ -5,16 +5,20 @@ h1{
     border: 5px solid #da2360;
 }
 
-.bookDetailsImage{
-    width: 300px;
-    height: auto;
-  }
-
-.mat-raised-button{
+.avatarImage{
     width: 100%;
-    margin: 20px;
+    height: auto;
 }
 
-mat-form-field{
-    margin: 20px;
+.appProperty{
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+:host ::ng-deep app-property .mat-raised-button{
+    width: 100%;
+}
+
+:host ::ng-deep app-property mat-form-field{
+    width: 70%;
 }

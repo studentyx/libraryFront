@@ -13,6 +13,7 @@ import {
     MatTableModule,
     MatCardModule
 } from '@angular/material';
+import { PropertyComponent } from './property.component';
 
 @NgModule({
     imports: [
@@ -27,8 +28,12 @@ import {
         MatSortModule,
         MatTableModule,
     ],
-    declarations: [],
-    exports: [],
+    declarations: [
+        PropertyComponent
+    ],
+    exports: [
+        PropertyComponent
+    ],
     entryComponents: [],
     providers: [
         HttpService,
