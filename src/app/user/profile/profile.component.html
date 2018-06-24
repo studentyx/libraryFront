@@ -1,52 +1,21 @@
-<h1> {{user.usuario}} </h1>
+<h1> Profile: {{user.username}} </h1>
 
 <div fxLayout="row" fxLayoutWrap fxFill fxLayoutAlign="start start" fxLayoutGap="10px">
-  <div fxFlex="30%">
+  <div fxFlex="40%" >
 
-    <div class="info-card-container">
-
-      <!-- Change avatar -->
-      <img class="bookDetailsImage" src="{{user.avatar}}">
-      <div *ngIf="editPropertyActive('avatar'); then avatarEdit; else avatarShow"></div>
-      <ng-template #avatarShow>
-        <button mat-raised-button color="primary" (click)="editProperty('avatar')">
-          Change avatar
-        </button>
-      </ng-template>
-      <ng-template #avatarEdit>
-        <mat-form-field>
-          <input matInput placeholder="Avatar" [(ngModel)]="user.avatar">
-        </mat-form-field>
-        <button (click)="saveProperty()">Save</button>
-        <button (click)="cancelProperty()">Cancel</button>
-      </ng-template>
-
-
-      <!-- Change Password -->
-      <div *ngIf="editPropertyActive('password'); then passwordEdit; else passwordShow"></div>
-      <ng-template #passwordShow>
-        <button mat-raised-button color="primary" (click)="editProperty('password')">
-          Change password
-        </button>
-      </ng-template>
-      <ng-template #passwordEdit>
-        <mat-form-field>
-          <input matInput placeholder="Password" [(ngModel)]="user.password">
-        </mat-form-field>
-        <button (click)="saveProperty()">Save</button>
-        <button (click)="cancelProperty()">Cancel</button>
-      </ng-template>
-
+    <img class="avatarImage" src="{{user.avatar}}">
+    <div class="appProperty">
+      <app-property [propertyKey]="'avatar'" [(propertyValue)]="user.avatar" (propertyValueChange)="saveProperty()"></app-property>
     </div>
-
 
   </div>
 
 
-  <div fxFlex="50%">
-
-
-
+  <div fxFlex="40%">
+    <app-property [propertyKey]="'password'" [(propertyValue)]="user.password" (propertyValueChange)="saveProperty()"></app-property>
+    <div class="appProperty">
+      <app-property [propertyKey]="'email'" [(propertyValue)]="user.email" (propertyValueChange)="saveProperty()"></app-property>
+    </div>
   </div>
 
   <div fxFlex>

@@ -1,0 +1,13 @@
+<div *ngIf="editPropertyActive(); then edit; else show"></div>
+<ng-template #show>
+  <button mat-raised-button color="primary" (click)="editProperty()">
+    Change {{propertyKey}}
+  </button>
+</ng-template>
+<ng-template #edit>
+  <mat-form-field>
+    <input matInput placeholder="{{propertyKey}}" [(ngModel)]="propertyValue">
+  </mat-form-field>
+  <button (click)="saveProperty($event)">Save</button>
+  <button (click)="cancelProperty()">Cancel</button>
+</ng-template>

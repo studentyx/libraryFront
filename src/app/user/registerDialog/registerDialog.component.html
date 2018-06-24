@@ -1,0 +1,50 @@
+<mat-card>
+
+    <form [formGroup]="registerForm">
+        <mat-dialog-content>
+
+            <img src="../../assets/library.png" class="imgDialog">
+            <mat-card-title>
+                Crea una cuenta
+            </mat-card-title>
+
+            <mat-form-field>
+                <input matInput placeholder="Username" [(ngModel)]="user.username" [formControl]="username" required>
+                <mat-error *ngIf="username.invalid">You must enter an username</mat-error>
+            </mat-form-field>
+
+            <mat-form-field>
+                <input matInput type="password" name="password" placeholder="Password" [(ngModel)]="user.password" [formControl]="password"
+                    required>
+                <mat-error *ngIf="password.invalid">You must enter a password</mat-error>
+            </mat-form-field>
+
+            <mat-form-field>
+                <input matInput type="password" name="confirmPassword" placeholder="Confirm Password" [(ngModel)]="confirmPassword" [formControl]="repeatPassword">
+                <mat-hint class="formError" *ngIf="nonEqualPasswords()">The passwords dont match</mat-hint>
+            </mat-form-field>
+
+            <mat-form-field>
+                <input matInput placeholder="Enter your email" [(ngModel)]="user.email" [formControl]="email" required>
+                <mat-error *ngIf="email.invalid">The email is invalid</mat-error>
+            </mat-form-field>
+
+            <re-captcha (resolved)="resolved($event)" siteKey="6Lc4AGAUAAAAABZvwu3ZqErFbQjqm9Yfm5yvjew9"></re-captcha>
+
+        </mat-dialog-content>
+        <mat-dialog-actions align="center">
+
+            <button mat-raised-button mat-dialog-close color="warn">
+                Cancel
+                <mat-icon>close</mat-icon>
+            </button>
+            <button mat-raised-button color="primary" (click)="register()" [disabled]="invalidRegisterData()">
+                Register
+            </button>
+
+        </mat-dialog-actions>
+
+    </form>
+
+
+</mat-card>

@@ -4,8 +4,8 @@ import { LibraryBooksComponent } from '../libraryBooks/libraryBooks.component';
 import { UserService } from '../shared/user.service';
 import { LoginComponent } from './login/login-dialog.component';
 import { MatDialog } from '@angular/material';
-import { SignUpComponent } from '../user/signUp/signUp.component';
 import { ProfileComponent } from '../user/profile/profile.component';
+import { RegisterDialogComponent } from '../user/registerDialog/registerDialog.component';
 
 @Component({
   selector: 'app-home',
@@ -17,14 +17,14 @@ export class HomeComponent {
 
   static URL = 'home';
   constructor(
-    private loginDialog: MatDialog,
+    private matDialog: MatDialog,
     private router: Router,
     private userService: UserService) {
 
   }
 
   login(): void {
-    const dialogRef = this.loginDialog.open(LoginComponent, {
+    const dialogRef = this.matDialog.open(LoginComponent, {
       width: '250px'
     });
   }
@@ -42,7 +42,9 @@ export class HomeComponent {
   }
 
   register(): void {
-    this.router.navigate([HomeComponent.URL, SignUpComponent.URL])
+    const dialogRef = this.matDialog.open(RegisterDialogComponent, {
+      width: '600px'
+    });
   }
 
   home() {
