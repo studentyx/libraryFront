@@ -59,7 +59,6 @@ export class RegisterDialogComponent {
     }
 
     register() {
-
         this.usernameAlreadyExist().subscribe(data=>{
 
             if ( data ){
@@ -71,21 +70,15 @@ export class RegisterDialogComponent {
             }
 
         });
-
     }
 
-
-
     usernameAlreadyExist(): Observable<boolean> {
-        
-
         return this.userService.read( this.user.username ).map(data => {
 
             let user: User = data as User;
             return user !== null;
 
-        }
-
+        });
     }
 
     snackbarMessage( message: string ): void {
