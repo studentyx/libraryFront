@@ -4,7 +4,6 @@ import { LibraryBooksComponent } from '../libraryBooks/libraryBooks.component';
 import { UserService } from '../shared/user.service';
 import { LoginComponent } from './login/login-dialog.component';
 import { MatDialog } from '@angular/material';
-import { SignUpComponent } from '../user/signUp/signUp.component';
 import { ProfileComponent } from '../user/profile/profile.component';
 import { RegisterDialogComponent } from '../user/registerDialog/registerDialog.component';
 
