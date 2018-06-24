@@ -7,6 +7,7 @@ import { Review } from '../shared/review.model';
 import { UserService } from '../shared/user.service';
 
 import { MatPaginator, MatSort, MatTableDataSource } from '@angular/material';
+import { BookReviewsComponent } from './bookReviews/bookReviews.component';
 
 @Component({
     templateUrl: 'bookDetails.component.html',
@@ -17,9 +18,6 @@ export class BookDetailsComponent implements OnInit {
 
     static URL = 'bookDetails/:id';
 
-    title = 'Reviews by users';
-    displayedColumns = ['review'];
-
     dataSource = new MatTableDataSource<Review>();
     @ViewChild(MatPaginator) paginator: MatPaginator;
     @ViewChild(MatSort) sort: MatSort;
@@ -27,9 +25,6 @@ export class BookDetailsComponent implements OnInit {
     bookId: string;
     book: Book;
 
-    reviews: Review[];
-    reviewText: string;
-    reviewEdit: Review;
 
     propertyString: string;
 
@@ -55,52 +50,12 @@ export class BookDetailsComponent implements OnInit {
             this.book = data;
             this.genreUpdate = this.book.genre.join(", ");
             this.tagsUpdate = this.book.tags.join(", ");
-
-            this.reviewService.setBook(this.bookId);
-
-            this.reviewService.getAllReviews().subscribe(reviewData => {
-                this.dataSource.data = reviewData;
-                this.dataSource.sort = this.sort;
-                this.dataSource.paginator = this.paginator;
-                //this.reviews = reviewData;
-            });
-
-
         });
 
     }
 
-    postReview(){
-        let review: Review = { book: this.book, text: this.reviewText };
-        this.reviewService.create( review ).subscribe();
-    }
 
-    reviewOwner( review: Review ){
-        return this.userService.isAuthenticated() 
-        && ( this.userService.getRol() === 'admin' || this.userService.getLoginUser() === review.user.username );
-    }
-
-
-    editReview( review: Review ){
-        this.reviewEdit = review;
-    }
-
-    saveReview( review: Review ){
-        this.reviewService.update(this.reviewEdit).subscribe(data => {
-            
-        });
-        this.reviewEdit = undefined;
-    }
-
-    cancelReview( review: Review ){
-        this.reviewEdit = undefined;
-    }
-
-    deleteReview( review: Review ){
-        if (confirm("Are you sure you want to delete this review?")) {
-            this.reviewService.delete(review._id).subscribe();
-        }
-    }
+    
 
 
 
