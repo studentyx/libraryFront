@@ -30,7 +30,7 @@
           <button mat-raised-button color="accent" (click)="detailsBook(row._id)">Details
             <mat-icon>details</mat-icon>
           </button>
-          <button mat-raised-button color="warn" *ngIf="manageBookPrivileges()" (click)="deleteBook(row._id)">Delete
+          <button mat-raised-button color="warn" *ngIf="userService.manageBookPrivileges()" (click)="deleteBook(row._id)">Delete
             <mat-icon>delete</mat-icon>
           </button>
         </mat-cell>
