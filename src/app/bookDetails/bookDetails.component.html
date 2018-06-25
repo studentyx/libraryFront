@@ -1,22 +1,32 @@
 <h1> {{book.title}} </h1>
+<div *ngIf="manageBookPrivileges()">
+    <app-property [propertyKey]="'Change Book Title'" [(propertyValue)]="book.title" (propertyValueChange)="saveProperty()"></app-property>
+  </div>
 
 <div fxLayout="row" fxLayoutWrap fxFill fxLayoutAlign="start start" fxLayoutGap="10px">
 
   <div fxFlex="30%">
     <div class="info-card-container">
       <img class="bookDetailsImage" src="{{book.image}}">
+      <div *ngIf="manageBookPrivileges()">
+        <app-property [propertyKey]="'Change Book Image'" [(propertyValue)]="book.image" (propertyValueChange)="saveProperty()"></app-property>
+      </div>
 
-      <app-propertyBookDetails [editControl] = "userService.isAuthenticated()" [propertyKey]="'genre'" [(propertyValueArray)]="book.genre" (propertyValueArrayChange)="saveProperty()"></app-propertyBookDetails>
-      <app-propertyBookDetails [editControl] = "userService.isAuthenticated()" [propertyKey]="'tags'" [(propertyValueArray)]="book.tags" (propertyValueArrayChange)="saveProperty()"></app-propertyBookDetails>
+      <app-propertyBookDetails [editControl]="userService.isAuthenticated()" [propertyKey]="'genre'" [(propertyValueArray)]="book.genre"
+        (propertyValueArrayChange)="saveProperty()"></app-propertyBookDetails>
+      <app-propertyBookDetails [editControl]="userService.isAuthenticated()" [propertyKey]="'tags'" [(propertyValueArray)]="book.tags"
+        (propertyValueArrayChange)="saveProperty()"></app-propertyBookDetails>
 
     </div>
   </div>
 
+  <div fxFlex="5%"></div>
 
   <div fxFlex="50%">
 
-      <app-propertyBookDetails [editControl] = "userService.isAuthenticated()" [propertyKey]="'description'" [(propertyValue)]="book.description" (propertyValueChange)="saveProperty()"></app-propertyBookDetails>
-      <app-bookReviews [book]="this.book" ></app-bookReviews>
+    <app-propertyBookDetails [editControl]="userService.isAuthenticated()" [propertyKey]="'description'" [(propertyValue)]="book.description"
+      (propertyValueChange)="saveProperty()"></app-propertyBookDetails>
+    <app-bookReviews [book]="this.book"></app-bookReviews>
 
   </div>
 
