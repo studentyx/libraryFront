@@ -1,5 +1,5 @@
 
-<button mat-raised-button color="primary" *ngIf="manageBookPrivileges()" (click)="createBookDialog()">
+<button mat-raised-button color="primary" *ngIf="userService.manageBookPrivileges()" (click)="createBookDialog()">
   Add book
   <mat-icon>add</mat-icon>
 </button>

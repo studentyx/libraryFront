@@ -33,11 +33,6 @@ export class BookDetailsComponent implements OnInit {
         });
     }
 
-    manageBookPrivileges(){
-        let rol = this.userService.getRol();
-        return rol == 'admin' || rol == 'bookManager';
-    }
-
     saveProperty(){
         this.bookService.update(this.book).subscribe();
     }

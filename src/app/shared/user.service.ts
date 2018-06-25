@@ -13,7 +13,7 @@ export class UserService {
   private username: string;
   private rol: string;
 
-  constructor(private httpService: HttpService) {    
+  constructor(private httpService: HttpService) {
   }
 
   isAuthenticated(): boolean {
@@ -24,8 +24,13 @@ export class UserService {
     return this.username;
   }
 
-  getRol(): string{
+  getRol(): string {
     return this.rol;
+  }
+
+  manageBookPrivileges() {
+    let rol = this.getRol();
+    return rol == 'admin' || rol == 'bookManager';
   }
 
   login(username: string, password: string): Observable<boolean> {
@@ -34,9 +39,9 @@ export class UserService {
     return this.httpService.post(UserService.LOGIN_END_POINT, user).map(
       res => {
         this.token = res.token;
-        this.httpService.setToken( this.token );
+        this.httpService.setToken(this.token);
         this.username = username;
-        this.read( this.username ).subscribe( data => {
+        this.read(this.username).subscribe(data => {
           this.rol = data.rol;
         });
         return this.token !== undefined;
@@ -49,13 +54,13 @@ export class UserService {
 
   logout(): void {
     this.token = undefined;
-    this.httpService.setToken( this.token );
+    this.httpService.setToken(this.token);
     this.username = undefined;
     this.rol = undefined;
   }
 
   create(user: User, recaptcha: string): Observable<boolean> {
-    return this.httpService.header('recaptcha', recaptcha ).post(UserService.END_POINT, user).map(
+    return this.httpService.header('recaptcha', recaptcha).post(UserService.END_POINT, user).map(
       data => {
         return true;
       },
