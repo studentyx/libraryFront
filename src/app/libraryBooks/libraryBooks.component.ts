@@ -61,9 +61,6 @@ export class LibraryBooksComponent implements OnInit {
         this.router.navigate(['home/bookDetails', id]);
     }
 
-    manageBookPrivileges(){
-        let rol = this.userService.getRol();
-        return rol == 'admin' || rol == 'bookManager';
-    }
+    
 
 }
