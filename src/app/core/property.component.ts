@@ -14,9 +14,11 @@ export class PropertyComponent {
   @Output() propertyValueChange = new EventEmitter<string>();
 
   editBool: boolean = false;
+  editString: string;
 
   editProperty() {
     this.editBool = true;
+    this.editString = this.propertyValue;
   }
 
   editPropertyActive() {
@@ -25,10 +27,11 @@ export class PropertyComponent {
 
   cancelProperty(){
     this.editBool = false;
+    this.propertyValue = this.editString;
   }
 
   saveProperty(event){
-    this.cancelProperty();
+    this.editBool = false;
     this.propertyValueChange.emit( this.propertyValue );
   }
   
