@@ -1,0 +1,31 @@
+<div *ngIf="editPropertyActive(); then edit; else show"></div>
+<ng-template #show>
+    <h2> {{propertyKey}}
+        <button *ngIf="editControl" (click)="editProperty()">Edit</button>
+    </h2>
+    <div *ngIf="propertyValue !== undefined">
+        <span style="white-space:pre-wrap;"> {{propertyValue}} </span>
+    </div>
+    <div *ngIf="propertyValueArray !== undefined">
+        <span *ngFor="let property of propertyValueArray">
+            <p>
+                <a [routerLink]="['/home/libraryBooks']" [queryParams]="queryParams(property)">{{property}}</a>
+            </p>
+        </span>
+    </div>
+
+</ng-template>
+<ng-template #edit>
+    <h2> {{propertyKey}}
+        <button (click)="saveProperty()">Save</button>
+        <button (click)="cancelProperty()">Cancel</button>
+    </h2>
+    <div *ngIf="propertyValue !== undefined">
+        <textarea matInput type="string" name="{{propertyKey}}" [(ngModel)]="propertyValue" placeholder="{{propertyKey}}"></textarea>
+    </div>
+    <div *ngIf="propertyValueArray !== undefined">
+        <textarea matInput type="string" name="{{propertyKey}}" [(ngModel)]="editStringArray" placeholder="{{propertyKey}}"></textarea>
+    </div>
+
+</ng-template>
+

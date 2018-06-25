@@ -17,6 +17,10 @@ button:hover, .material-icons:hover{
   height: auto;
 }
 
+:host ::ng-deep app-bookReviews mat-card-content{
+  margin-top: 40px;
+}
+
 :host ::ng-deep app-bookReviews mat-card-actions{
   text-align: right;
 }
@@ -24,3 +28,13 @@ button:hover, .material-icons:hover{
 :host ::ng-deep app-bookReviews .mat-card{
   margin-top: 10px;
 }
+
+:host ::ng-deep textarea{
+  height: 10em;
+}
+
+:host ::ng-deep h2{
+  font-variant: small-caps;
+  color: rgb(5, 5, 5);
+}
+

@@ -1,7 +1,7 @@
 <mat-card>
 
     <form [formGroup]="registerForm">
-        <mat-dialog-content>
+        <mat-card-content>
 
             <img src="../../assets/library.png" class="imgDialog">
             <mat-card-title>
@@ -31,8 +31,8 @@
 
             <re-captcha (resolved)="resolved($event)" siteKey="6Lc4AGAUAAAAABZvwu3ZqErFbQjqm9Yfm5yvjew9"></re-captcha>
 
-        </mat-dialog-content>
-        <mat-dialog-actions align="center">
+        </mat-card-content>
+        <mat-card-actions align="center">
 
             <button mat-raised-button mat-dialog-close color="warn">
                 Cancel
@@ -42,7 +42,7 @@
                 Register
             </button>
 
-        </mat-dialog-actions>
+        </mat-card-actions>
 
     </form>
 
