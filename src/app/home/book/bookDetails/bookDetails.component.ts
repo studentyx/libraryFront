@@ -1,11 +1,9 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { BookService } from '../shared/book.service';
-import { Book } from '../shared/book.model';
 import { Router, ActivatedRoute } from "@angular/router";
-import { UserService } from '../shared/user.service';
-
 import { MatPaginator, MatSort, MatTableDataSource } from '@angular/material';
-import { BookReviewsComponent } from './bookReviews/bookReviews.component';
+import { Book } from '../../shared/book.model';
+import { BookService } from '../book.service';
+import { UserService } from '../../shared/user.service';
 
 @Component({
     templateUrl: 'bookDetails.component.html',

@@ -3,7 +3,6 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { HttpService } from './http.service';
 import { NgModule } from '@angular/core';
-
 import {
     MatDialogModule,
     MatIconModule,
@@ -13,7 +12,6 @@ import {
     MatTableModule,
     MatCardModule
 } from '@angular/material';
-import { PropertyComponent } from './property.component';
 
 @NgModule({
     imports: [
@@ -29,10 +27,8 @@ import { PropertyComponent } from './property.component';
         MatTableModule,
     ],
     declarations: [
-        PropertyComponent
     ],
     exports: [
-        PropertyComponent
     ],
     entryComponents: [],
     providers: [

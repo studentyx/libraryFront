@@ -1,8 +1,8 @@
-import { Book } from './book.model';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { Subject } from 'rxjs/Subject';
-import { HttpService } from '../core/http.service';
+import { Book } from '../shared/book.model';
+import { HttpService } from '../../core/http.service';
 
 @Injectable()
 export class BookService {

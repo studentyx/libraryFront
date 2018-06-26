@@ -2,11 +2,10 @@ import { Component, OnInit, ViewChild, Input } from '@angular/core';
 import { UserService } from '../../shared/user.service';
 import { User } from '../../shared/user.model';
 import { Router } from '@angular/router';
-import { ReviewService } from '../../shared/review.service';
-
 import { MatPaginator, MatSort, MatTableDataSource } from '@angular/material';
-import { Review } from '../../shared/review.model';
 import { Book } from '../../shared/book.model';
+import { ReviewService } from '../review.service';
+import { Review } from '../../shared/review.model';
 
 
 @Component({
