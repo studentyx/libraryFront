@@ -1,5 +1,3 @@
-
-
 <mat-expansion-panel *ngIf="userService.isAuthenticated()">
   <mat-expansion-panel-header>
     <mat-panel-title>
@@ -25,14 +23,18 @@
 
 <mat-table #table [dataSource]="dataSource" matSort>
 
+  <ng-container matColumnDef="avatar">
+    <mat-cell *matCellDef="let review">
+      <img class="avatarImage" src="{{review.user.avatar}}"> {{review.user.username}}
+    </mat-cell>
+  </ng-container>
+
   <ng-container matColumnDef="review">
-    <mat-header-cell *matHeaderCellDef mat-sort-header> </mat-header-cell>
     <mat-cell *matCellDef="let review">
 
       <mat-card>
-        <mat-card-title>
-          <img class="avatarImage" src="{{review.user.avatar}}"> {{review.user.username}}
-        </mat-card-title>
+          <mat-card-title>{{formatDate(review.date)}}</mat-card-title>
+
 
         <div *ngIf="reviewEdit !== undefined && reviewEdit === review; then reviewEditIf; else reviewShow"></div>
         <ng-template #reviewShow>
@@ -54,7 +56,7 @@
         <ng-template #reviewEditIf>
           <mat-card-content>
             <textarea matInput type="string" name="review" [(ngModel)]="reviewEdit.text" placeholder="review">
-                            </textarea>
+                          </textarea>
           </mat-card-content>
           <mat-card-actions *ngIf="reviewOwner(review)">
 
@@ -70,13 +72,13 @@
         </ng-template>
       </mat-card>
 
+
     </mat-cell>
   </ng-container>
 
-  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+  <!--<mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>-->
   <mat-row *matRowDef="let review; columns: displayedColumns;"></mat-row>
 
 </mat-table>
 
 <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
-

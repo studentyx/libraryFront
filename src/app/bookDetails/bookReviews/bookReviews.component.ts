@@ -19,7 +19,7 @@ export class BookReviewsComponent implements OnInit {
     @Input() book: Book;
     reviewText: string;
     reviewEdit: Review;
-    displayedColumns = ['review'];
+    displayedColumns = ['avatar', 'review'];
 
     dataSource = new MatTableDataSource<Review>();
     @ViewChild(MatPaginator) paginator: MatPaginator;
@@ -38,6 +38,13 @@ export class BookReviewsComponent implements OnInit {
         });
     }
 
+    formatDate( dt: Date ): string{
+        let date = new Date( dt );
+        let locale = "en-us";
+        return date.toLocaleString(locale, {month: "long"}) 
+        + " " + date.getDay() 
+        + ", " + date.getFullYear();
+    }
     postReview() {
         let review: Review = { book: this.book, text: this.reviewText };
         this.reviewService.create(review).subscribe();

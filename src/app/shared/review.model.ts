@@ -6,5 +6,6 @@ export interface Review {
     user?: User;
     book?: Book;
     text: string;
+    date?: Date;
 }
 
