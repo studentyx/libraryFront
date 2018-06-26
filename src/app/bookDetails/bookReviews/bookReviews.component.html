@@ -1,21 +1,27 @@
-<mat-expansion-panel *ngIf="userService.isAuthenticated()">
-  <mat-expansion-panel-header>
-    <mat-panel-title>
-      Leave a review
-    </mat-panel-title>
-    <mat-panel-description>
+<div *ngIf="loginUserReview() !== undefined; then edit; else post"></div>
+<ng-template #post>
+  <mat-expansion-panel *ngIf="userService.isAuthenticated()">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        Leave a review
+      </mat-panel-title>
+      <mat-panel-description>
 
-    </mat-panel-description>
+      </mat-panel-description>
 
-  </mat-expansion-panel-header>
+    </mat-expansion-panel-header>
 
-  <textarea matInput type="string" name="reviewText" [(ngModel)]="reviewText" placeholder="reviewText">
-        </textarea>
-  <button mat-raised-button color="primary" (click)="postReview()">
-    Post review
-  </button>
+    <textarea matInput type="string" name="reviewText" [(ngModel)]="reviewText" placeholder="reviewText">
+            </textarea>
+    <button mat-raised-button color="primary" (click)="postReview()">
+      Post review
+    </button>
+  </mat-expansion-panel>
+</ng-template>
+<ng-template #edit>
+</ng-template>
 
-</mat-expansion-panel>
+
 
 
 
@@ -33,7 +39,7 @@
     <mat-cell *matCellDef="let review">
 
       <mat-card>
-          <mat-card-title>{{formatDate(review.date)}}</mat-card-title>
+        <mat-card-title>{{formatDate(review.date)}}</mat-card-title>
 
 
         <div *ngIf="reviewEdit !== undefined && reviewEdit === review; then reviewEditIf; else reviewShow"></div>

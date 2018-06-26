@@ -25,6 +25,8 @@ export class BookReviewsComponent implements OnInit {
     @ViewChild(MatPaginator) paginator: MatPaginator;
     @ViewChild(MatSort) sort: MatSort;
 
+    userReview: Review = undefined;
+
     constructor(private reviewService: ReviewService, private userService: UserService) {
 
     }
@@ -38,6 +40,11 @@ export class BookReviewsComponent implements OnInit {
         });
     }
 
+    loginUserReview(){
+        this.userReview = this.dataSource.data.find( review => review.user.username == this.userService.getLoginUser() );
+        return this.userReview;
+    }
+
     formatDate( dt: Date ): string{
         let date = new Date( dt );
         let locale = "en-us";
@@ -45,6 +52,7 @@ export class BookReviewsComponent implements OnInit {
         + " " + date.getDay() 
         + ", " + date.getFullYear();
     }
+
     postReview() {
         let review: Review = { book: this.book, text: this.reviewText };
         this.reviewService.create(review).subscribe();
