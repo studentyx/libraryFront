@@ -31,7 +31,6 @@ export class BookReviewsComponent implements OnInit {
 
     ngOnInit(): void {
         this.reviewService.setBook(this.book._id);
-        
         this.reviewService.getAllReviews().subscribe(reviewData => {
             this.dataSource.data = reviewData;
             this.dataSource.sort = this.sort;
@@ -39,33 +38,33 @@ export class BookReviewsComponent implements OnInit {
         });
     }
 
-    postReview(){
+    postReview() {
         let review: Review = { book: this.book, text: this.reviewText };
-        this.reviewService.create( review ).subscribe();
+        this.reviewService.create(review).subscribe();
     }
 
-    reviewOwner( review: Review ){
-        return this.userService.isAuthenticated() 
-        && ( this.userService.getRol() === 'admin' || this.userService.getLoginUser() === review.user.username );
+    reviewOwner(review: Review) {
+        return this.userService.isAuthenticated()
+            && (this.userService.getRol() === 'admin' || this.userService.getLoginUser() === review.user.username);
     }
 
 
-    editReview( review: Review ){
+    editReview(review: Review) {
         this.reviewEdit = review;
     }
 
-    saveReview( review: Review ){
+    saveReview(review: Review) {
         this.reviewService.update(this.reviewEdit).subscribe(data => {
-            
+
         });
         this.reviewEdit = undefined;
     }
 
-    cancelReview( review: Review ){
+    cancelReview(review: Review) {
         this.reviewEdit = undefined;
     }
 
-    deleteReview( review: Review ){
+    deleteReview(review: Review) {
         if (confirm("Are you sure you want to delete this review?")) {
             this.reviewService.delete(review._id).subscribe();
         }
