@@ -45,6 +45,10 @@ export class LibraryBooksComponent implements OnInit {
         });
     }
 
+    applyFilter(filterValue: string) {
+        this.dataSource.filter = filterValue.trim().toLowerCase();
+    }
+
     createBookDialog() {
         let dialogRef = this.dialog.open(CreateBookDialogComponent, {
             width: '320px'
@@ -61,6 +65,6 @@ export class LibraryBooksComponent implements OnInit {
         this.router.navigate(['home/bookDetails', id]);
     }
 
-    
+
 
 }
