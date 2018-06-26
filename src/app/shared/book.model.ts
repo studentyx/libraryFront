@@ -6,5 +6,4 @@ export interface Book {
     genre?: string[];
     tags?: string [];
     author?: string;
-    rating?: number;
 }
