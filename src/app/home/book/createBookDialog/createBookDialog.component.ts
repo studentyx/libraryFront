@@ -1,7 +1,7 @@
 import { Component, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
-import { BookService } from '../../shared/book.service';
 import { Book } from '../../shared/book.model';
+import { BookService } from '../book.service';
 
 
 @Component({

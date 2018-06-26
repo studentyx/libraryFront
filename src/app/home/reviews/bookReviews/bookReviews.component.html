@@ -1,38 +1,47 @@
+<div *ngIf="loginUserReview() !== undefined; then edit; else post"></div>
+<ng-template #post>
+  <mat-expansion-panel *ngIf="userService.isAuthenticated()">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        Leave a review
+      </mat-panel-title>
+      <mat-panel-description>
+
+      </mat-panel-description>
+
+    </mat-expansion-panel-header>
+
+    <textarea matInput type="string" name="reviewText" [(ngModel)]="reviewText" placeholder="reviewText">
+            </textarea>
+    <button mat-raised-button color="primary" (click)="postReview()">
+      Post review
+    </button>
+  </mat-expansion-panel>
+</ng-template>
+<ng-template #edit>
+  <div class="messageDiv">You have already posted a review. Please edit your past contribution </div>
+</ng-template>
 
 
-<mat-expansion-panel *ngIf="userService.isAuthenticated()">
-  <mat-expansion-panel-header>
-    <mat-panel-title>
-      Leave a review
-    </mat-panel-title>
-    <mat-panel-description>
-
-    </mat-panel-description>
-
-  </mat-expansion-panel-header>
-
-  <textarea matInput type="string" name="reviewText" [(ngModel)]="reviewText" placeholder="reviewText">
-        </textarea>
-  <button mat-raised-button color="primary" (click)="postReview()">
-    Post review
-  </button>
-
-</mat-expansion-panel>
-
-
+<mat-form-field>
+  <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter reviews by username">
+</mat-form-field>
 
 <h2> Reviews by users </h2>
-
 <mat-table #table [dataSource]="dataSource" matSort>
 
+  <ng-container matColumnDef="avatar">
+    <mat-cell *matCellDef="let review">
+      <img class="avatarImage" src="{{review.user.avatar}}"> {{review.user.username}}
+    </mat-cell>
+  </ng-container>
+
   <ng-container matColumnDef="review">
-    <mat-header-cell *matHeaderCellDef mat-sort-header> </mat-header-cell>
     <mat-cell *matCellDef="let review">
 
       <mat-card>
-        <mat-card-title>
-          <img class="avatarImage" src="{{review.user.avatar}}"> {{review.user.username}}
-        </mat-card-title>
+        <mat-card-title>{{formatDate(review.date)}}</mat-card-title>
+
 
         <div *ngIf="reviewEdit !== undefined && reviewEdit === review; then reviewEditIf; else reviewShow"></div>
         <ng-template #reviewShow>
@@ -54,7 +63,7 @@
         <ng-template #reviewEditIf>
           <mat-card-content>
             <textarea matInput type="string" name="review" [(ngModel)]="reviewEdit.text" placeholder="review">
-                            </textarea>
+                          </textarea>
           </mat-card-content>
           <mat-card-actions *ngIf="reviewOwner(review)">
 
@@ -70,13 +79,13 @@
         </ng-template>
       </mat-card>
 
+
     </mat-cell>
   </ng-container>
 
-  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+  <!--<mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>-->
   <mat-row *matRowDef="let review; columns: displayedColumns;"></mat-row>
 
 </mat-table>
 
 <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
-

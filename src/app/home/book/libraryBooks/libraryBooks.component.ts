@@ -1,12 +1,11 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { BookService } from '../shared/book.service';
-import { Book } from '../shared/book.model';
-
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { MatPaginator, MatSort, MatTableDataSource } from '@angular/material';
-import { CreateBookDialogComponent } from './createBookDialog/createBookDialog.component';
-import { UserService } from '../shared/user.service';
+import { Book } from '../../shared/book.model';
+import { UserService } from '../../shared/user.service';
+import { BookService } from '../book.service';
+import { CreateBookDialogComponent } from '../createBookDialog/createBookDialog.component';
 
 @Component({
     templateUrl: 'libraryBooks.component.html',
@@ -33,6 +32,7 @@ export class LibraryBooksComponent implements OnInit {
         this.route.queryParams.subscribe(params => {
             this.bookService.setGenre(params['genre']);
             this.bookService.setTag(params['tags']);
+            this.bookService.setAuthor(params['author']);
         });
         this.synchronize();
     }
@@ -43,6 +43,10 @@ export class LibraryBooksComponent implements OnInit {
             this.dataSource.sort = this.sort;
             this.dataSource.paginator = this.paginator;
         });
+    }
+
+    applyFilter(filterValue: string) {
+        this.dataSource.filter = filterValue.trim().toLowerCase();
     }
 
     createBookDialog() {
@@ -61,6 +65,6 @@ export class LibraryBooksComponent implements OnInit {
         this.router.navigate(['home/bookDetails', id]);
     }
 
-    
+
 
 }

@@ -1,5 +1,10 @@
+mat-form-field{
+  width: 100%;
+  margin: 20px;
+}
+
 .bookImage{
-  width: 30%;
+  width: 100%;
   height: auto;
   text-align: center;
 }
@@ -12,4 +17,12 @@ h2{
 
 .tableActions{
   text-align: right;
+}
+
+.mat-column-image {
+  flex: 0 0 20%;
+}
+
+.mat-column-title {
+  flex: 0 0 50%;
 }

@@ -1,8 +1,8 @@
-import { Book } from './book.model';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { Subject } from 'rxjs/Subject';
-import { HttpService } from '../core/http.service';
+import { Book } from '../shared/book.model';
+import { HttpService } from '../../core/http.service';
 
 @Injectable()
 export class BookService {
@@ -12,6 +12,7 @@ export class BookService {
 
   private genre: string = undefined;
   private tags: string = undefined;
+  private author: string = undefined;
 
   constructor(private httpService: HttpService) {
   }
@@ -24,13 +25,17 @@ export class BookService {
     this.tags = tag;
   }
 
+  setAuthor( author: string ): void{
+    this.author = author;
+  }
+
   getAllBooks(): Observable<Book[]> {
     this.readAll();
     return this.books.asObservable();
   }
 
   private readAll(): void {
-    this.httpService.param( "genre", this.genre ).param( "tags", this.tags ).get(BookService.END_POINT).subscribe(
+    this.httpService.param( "genre", this.genre ).param( "tags", this.tags ).param( "author", this.author ).get(BookService.END_POINT).subscribe(
       (booksArray: Book[]) => this.books.next(booksArray),
     );
   }

@@ -1,8 +1,8 @@
-import { Review } from './review.model';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { Subject } from 'rxjs/Subject';
-import { HttpService } from '../core/http.service';
+import { HttpService } from '../../core/http.service';
+import { Review } from '../shared/review.model';
 
 @Injectable()
 export class ReviewService {

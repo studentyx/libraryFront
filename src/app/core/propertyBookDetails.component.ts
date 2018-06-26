@@ -12,7 +12,7 @@ export class PropertyBookDetailsComponent {
 
   @Input() propertyKey: string;
 
-  @Input() propertyValue: string = undefined;
+  @Input() propertyValue: string = null;
   @Output() propertyValueChange = new EventEmitter<string>();
 
   @Input() propertyValueArray: string[] = undefined;
@@ -25,8 +25,8 @@ export class PropertyBookDetailsComponent {
   editProperty() {
     this.editActive = true;
     this.editString = this.propertyValue;
-    if ( this.propertyValueArray !== undefined ){
-      this.editStringArray = this.propertyValueArray.join(", ")
+    if (this.propertyValueArray !== undefined) {
+      this.editStringArray = this.propertyValueArray.join("\n")
     }
   }
 
@@ -34,23 +34,23 @@ export class PropertyBookDetailsComponent {
     return this.editActive;
   }
 
-  cancelProperty(){
+  cancelProperty() {
     this.editActive = false;
     this.propertyValue = this.editString;
   }
 
-  saveProperty(event){
+  saveProperty(event) {
     this.editActive = false;
-    this.propertyValueChange.emit( this.propertyValue );
-    if ( this.propertyValueArray !== undefined ){
-      this.propertyValueArray = this.editStringArray.split(", ");
-      this.propertyValueArrayChange.emit( this.propertyValueArray );
+    this.propertyValueChange.emit(this.propertyValue);
+    if (this.propertyValueArray !== undefined) {
+      this.propertyValueArray = this.editStringArray.split("\n");
+      this.propertyValueArrayChange.emit(this.propertyValueArray);
     }
   }
 
-  queryParams( property: string ){
+  queryParams(property: string) {
     return { [this.propertyKey]: property };
   }
-  
+
 }
 

@@ -10,9 +10,7 @@ import { HttpModule, JsonpModule } from '@angular/http';
 import { NgModule } from '@angular/core';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { HttpService } from './core/http.service';
-
 import { RecaptchaModule } from 'ng-recaptcha';
-
 
 import {
   MatAutocompleteModule, MatButtonModule, MatButtonToggleModule,
@@ -27,9 +25,10 @@ import {
   MatTabsModule, MatToolbarModule, MatTooltipModule,
   MatStepperModule,
 } from '@angular/material';
-import { BookService } from './shared/book.service';
-import { UserService } from './shared/user.service';
-import { ReviewService } from './shared/review.service';
+
+import { BookService } from './home/book/book.service';
+import { UserService } from './home/shared/user.service';
+import { ReviewService } from './home/reviews/review.service';
 
 @NgModule({
   imports: [

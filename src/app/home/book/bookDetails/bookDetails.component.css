@@ -27,25 +27,62 @@ h1{
   margin-bottom: 10px;
 }
 
-:host ::ng-deep app-bookReviews mat-expansion-panel{
-  margin: 30px;
+:host ::ng-deep app-bookReviews .messageDiv{
+  width: 100%;
+  background-color: rgb(20, 115, 170);
+  color: black;
+  font-variant: small-caps;
+  text-align: center;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  padding: 10px;
+}
+
+:host ::ng-deep app-bookReviews mat-form-field{
+  width: 90%;
+  margin: 20px;
+}
+
+:host ::ng-deep app-bookReviews mat-row{
+  border: 2px solid #108696;
+}
+
+:host ::ng-deep app-bookReviews .mat-column-avatar{
+  flex: 0 0 15%;
+  text-align: center;
 }
 
 :host ::ng-deep app-bookReviews .avatarImage{
-  width: 80px;
+  width: 100%;
   height: auto;
+}
+
+
+:host ::ng-deep app-bookReviews mat-card-title{
+  font-size: larger;
+  text-align: right;
 }
 
 :host ::ng-deep app-bookReviews mat-card-content{
   margin-top: 40px;
+  text-align: left;
 }
 
 :host ::ng-deep app-bookReviews mat-card-actions{
   text-align: right;
 }
 
-:host ::ng-deep app-bookReviews .mat-card{
-  margin-top: 10px;
+
+
+:host ::ng-deep app-bookReviews mat-expansion-panel{
+  margin: 30px;
+}
+
+
+
+
+:host ::ng-deep app-bookReviews .reviewDate{
+  text-align: right;
 }
 
 :host ::ng-deep textarea{
@@ -56,4 +93,5 @@ h1{
   font-variant: small-caps;
   color: rgb(5, 5, 5);
 }
+
 

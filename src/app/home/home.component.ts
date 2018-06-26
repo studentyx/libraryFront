@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { LibraryBooksComponent } from '../libraryBooks/libraryBooks.component';
-import { UserService } from '../shared/user.service';
-import { LoginComponent } from './login/login-dialog.component';
 import { MatDialog } from '@angular/material';
-import { ProfileComponent } from '../user/profile/profile.component';
-import { RegisterDialogComponent } from '../user/registerDialog/registerDialog.component';
+import { UserService } from './shared/user.service';
+import { LoginComponent } from './user/login/login-dialog.component';
+import { ProfileComponent } from './user/profile/profile.component';
+import { RegisterDialogComponent } from './user/registerDialog/registerDialog.component';
+import { LibraryBooksComponent } from './book/libraryBooks/libraryBooks.component';
 
 @Component({
   selector: 'app-home',

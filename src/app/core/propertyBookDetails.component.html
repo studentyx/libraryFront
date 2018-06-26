@@ -3,7 +3,7 @@
     <h2> {{propertyKey}}
         <button *ngIf="editControl" (click)="editProperty()">Edit</button>
     </h2>
-    <div *ngIf="propertyValue !== undefined">
+    <div *ngIf="propertyValue !== null">
         <span style="white-space:pre-wrap;"> {{propertyValue}} </span>
     </div>
     <div *ngIf="propertyValueArray !== undefined">
@@ -20,10 +20,11 @@
         <button (click)="saveProperty()">Save</button>
         <button (click)="cancelProperty()">Cancel</button>
     </h2>
-    <div *ngIf="propertyValue !== undefined">
+    <div *ngIf="propertyValue !== null">
         <textarea matInput type="string" name="{{propertyKey}}" [(ngModel)]="propertyValue" placeholder="{{propertyKey}}"></textarea>
     </div>
     <div *ngIf="propertyValueArray !== undefined">
+        <h4>One entry per line</h4>
         <textarea matInput type="string" name="{{propertyKey}}" [(ngModel)]="editStringArray" placeholder="{{propertyKey}}"></textarea>
     </div>
 
