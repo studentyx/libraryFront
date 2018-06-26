@@ -18,6 +18,9 @@
           (propertyValueArrayChange)="saveProperty()"></app-propertyBookDetails>
         <app-propertyBookDetails [editControl]="userService.isAuthenticated()" [propertyKey]="'tags'" [(propertyValueArray)]="book.tags"
           (propertyValueArrayChange)="saveProperty()"></app-propertyBookDetails>
+        <app-propertyBookDetails [editControl]="userService.isAuthenticated()" [propertyKey]="'author'" [(propertyValueArray)]="book.author"
+          (propertyValueArrayChange)="saveProperty()"></app-propertyBookDetails>
+
 
       </div>
     </div>

@@ -24,6 +24,7 @@
         <textarea matInput type="string" name="{{propertyKey}}" [(ngModel)]="propertyValue" placeholder="{{propertyKey}}"></textarea>
     </div>
     <div *ngIf="propertyValueArray !== undefined">
+        <h4>One entry per line</h4>
         <textarea matInput type="string" name="{{propertyKey}}" [(ngModel)]="editStringArray" placeholder="{{propertyKey}}"></textarea>
     </div>
 

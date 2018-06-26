@@ -26,7 +26,7 @@ export class PropertyBookDetailsComponent {
     this.editActive = true;
     this.editString = this.propertyValue;
     if (this.propertyValueArray !== undefined) {
-      this.editStringArray = this.propertyValueArray.join(", ")
+      this.editStringArray = this.propertyValueArray.join("\n")
     }
   }
 
@@ -43,7 +43,7 @@ export class PropertyBookDetailsComponent {
     this.editActive = false;
     this.propertyValueChange.emit(this.propertyValue);
     if (this.propertyValueArray !== undefined) {
-      this.propertyValueArray = this.editStringArray.split(", ");
+      this.propertyValueArray = this.editStringArray.split("\n");
       this.propertyValueArrayChange.emit(this.propertyValueArray);
     }
   }

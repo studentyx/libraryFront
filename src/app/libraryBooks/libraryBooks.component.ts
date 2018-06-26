@@ -33,6 +33,7 @@ export class LibraryBooksComponent implements OnInit {
         this.route.queryParams.subscribe(params => {
             this.bookService.setGenre(params['genre']);
             this.bookService.setTag(params['tags']);
+            this.bookService.setAuthor(params['author']);
         });
         this.synchronize();
     }
