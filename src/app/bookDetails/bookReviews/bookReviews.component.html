@@ -19,14 +19,15 @@
   </mat-expansion-panel>
 </ng-template>
 <ng-template #edit>
+  <div class="messageDiv">You have already posted a review. Please edit your past contribution </div>
 </ng-template>
 
 
-
-
+<mat-form-field>
+  <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter reviews by username">
+</mat-form-field>
 
 <h2> Reviews by users </h2>
-
 <mat-table #table [dataSource]="dataSource" matSort>
 
   <ng-container matColumnDef="avatar">

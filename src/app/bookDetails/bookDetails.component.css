@@ -27,6 +27,21 @@ h1{
   margin-bottom: 10px;
 }
 
+:host ::ng-deep app-bookReviews .messageDiv{
+  width: 100%;
+  background-color: rgb(20, 115, 170);
+  color: black;
+  font-variant: small-caps;
+  text-align: center;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  padding: 10px;
+}
+
+:host ::ng-deep app-bookReviews mat-form-field{
+  width: 90%;
+  margin: 20px;
+}
 
 :host ::ng-deep app-bookReviews mat-row{
   border: 2px solid #108696;

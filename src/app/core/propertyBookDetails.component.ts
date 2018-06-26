@@ -12,7 +12,7 @@ export class PropertyBookDetailsComponent {
 
   @Input() propertyKey: string;
 
-  @Input() propertyValue: string = undefined;
+  @Input() propertyValue: string = null;
   @Output() propertyValueChange = new EventEmitter<string>();
 
   @Input() propertyValueArray: string[] = undefined;
@@ -25,7 +25,7 @@ export class PropertyBookDetailsComponent {
   editProperty() {
     this.editActive = true;
     this.editString = this.propertyValue;
-    if ( this.propertyValueArray !== undefined ){
+    if (this.propertyValueArray !== undefined) {
       this.editStringArray = this.propertyValueArray.join(", ")
     }
   }
@@ -34,23 +34,23 @@ export class PropertyBookDetailsComponent {
     return this.editActive;
   }
 
-  cancelProperty(){
+  cancelProperty() {
     this.editActive = false;
     this.propertyValue = this.editString;
   }
 
-  saveProperty(event){
+  saveProperty(event) {
     this.editActive = false;
-    this.propertyValueChange.emit( this.propertyValue );
-    if ( this.propertyValueArray !== undefined ){
+    this.propertyValueChange.emit(this.propertyValue);
+    if (this.propertyValueArray !== undefined) {
       this.propertyValueArray = this.editStringArray.split(", ");
-      this.propertyValueArrayChange.emit( this.propertyValueArray );
+      this.propertyValueArrayChange.emit(this.propertyValueArray);
     }
   }
 
-  queryParams( property: string ){
+  queryParams(property: string) {
     return { [this.propertyKey]: property };
   }
-  
+
 }
 

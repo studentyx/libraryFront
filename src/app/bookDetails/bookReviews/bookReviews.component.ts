@@ -40,17 +40,25 @@ export class BookReviewsComponent implements OnInit {
         });
     }
 
-    loginUserReview(){
-        this.userReview = this.dataSource.data.find( review => review.user.username == this.userService.getLoginUser() );
+    loginUserReview() {
+        this.userReview = this.dataSource.data.find(review => review.user.username == this.userService.getLoginUser());
         return this.userReview;
     }
 
-    formatDate( dt: Date ): string{
-        let date = new Date( dt );
+    formatDate(dt: Date): string {
+        let date = new Date(dt);
         let locale = "en-us";
-        return date.toLocaleString(locale, {month: "long"}) 
-        + " " + date.getDay() 
-        + ", " + date.getFullYear();
+        return date.toLocaleString(locale, { month: "long" })
+            + " " + date.getDay()
+            + ", " + date.getFullYear();
+    }
+
+    applyFilter(filterValue: string) {
+        this.dataSource.filterPredicate = (data, filter) => {
+            const dataStr = data.user.username;
+            return dataStr.indexOf(filter) != -1;
+        }
+        this.dataSource.filter = filterValue.trim().toLowerCase();
     }
 
     postReview() {
