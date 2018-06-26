@@ -11,10 +11,6 @@
             <input matInput type="string" placeholder="Title" [(ngModel)]="book.title" required />
         </mat-form-field>
 
-        <mat-form-field>
-            <input matInput type="string" placeholder="Image URL" name="image" [(ngModel)]="book.image">
-        </mat-form-field>
-
     </mat-dialog-content>
     <mat-dialog-actions>
 
@@ -23,7 +19,7 @@
             <mat-icon>close</mat-icon>
         </button>
         <button mat-raised-button color="primary" (click)="create()" [disabled]="book.title === ''">
-            Create Item
+            Add Book
         </button>
 
     </mat-dialog-actions>
