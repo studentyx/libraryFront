@@ -74,6 +74,7 @@ export class BookReviewsComponent implements OnInit {
 
     editReview(review: Review) {
         this.reviewEdit = review;
+        this.reviewText = review.text;
     }
 
     saveReview(review: Review) {
@@ -84,6 +85,7 @@ export class BookReviewsComponent implements OnInit {
     }
 
     cancelReview(review: Review) {
+        review.text = this.reviewText;
         this.reviewEdit = undefined;
     }
 
