@@ -85,7 +85,7 @@ export class UserService {
   }
 
   update(user: User): Observable<User> {
-    return this.httpService.put(UserService.END_POINT + '/' + user.username, user).map(data => {
+    return this.httpService.patch(UserService.END_POINT + '/' + user.username, user).map(data => {
       return data;
     });
   }

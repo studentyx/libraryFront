@@ -50,7 +50,7 @@ export class ReviewService {
     }
 
     update(review: Review): Observable<Review> {
-        return this.httpService.put(ReviewService.END_POINT + '/' + review._id, review).map(data => {
+        return this.httpService.patch(ReviewService.END_POINT + '/' + review._id, review).map(data => {
             this.readAll();
             return data;
         });
