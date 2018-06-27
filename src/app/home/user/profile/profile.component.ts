@@ -28,7 +28,6 @@ export class ProfileComponent implements OnInit {
     synchronize() {
         this.userService.read(this.userService.getLoginUser()).subscribe(data => {
             this.user = data;
-            this.user.password = '';
         });
     }
 
