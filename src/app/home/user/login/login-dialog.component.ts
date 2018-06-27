@@ -29,14 +29,9 @@ export class LoginComponent {
   login() {
     this.userService.login(this.usuario, this.password).subscribe(
       exito => {
-        if (exito) {
-          if (this.data != null) {
-            this.router.navigate(['home/libraryBooks', this.data.idRoom]);
-          }
-        } else {
+        if (exito === false) {
           this.showErrorAuthentication();
         }
-
       },
       error => {
         this.showErrorServer();
@@ -47,13 +42,13 @@ export class LoginComponent {
 
   showErrorAuthentication(): void {
     this.snackBar.open("Autenticacion fallida", 'Error', {
-      duration: 8000
+      duration: 2000
     });
   }
 
   showErrorServer(): void {
     this.snackBar.open("Error de conexion con el servidor", 'Error', {
-      duration: 8000
+      duration: 2000
     });
   }
 }

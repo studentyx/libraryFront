@@ -56,7 +56,7 @@ export class BookService {
   }
 
   update(book: Book): Observable<Book> {
-    return this.httpService.put(BookService.END_POINT + '/' + book._id, book).map(data => {
+    return this.httpService.patch(BookService.END_POINT + '/' + book._id, book).map(data => {
       this.readAll();
       return data;
     });

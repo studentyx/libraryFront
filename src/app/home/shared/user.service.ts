@@ -39,11 +39,13 @@ export class UserService {
     return this.httpService.post(UserService.LOGIN_END_POINT, user).map(
       res => {
         this.token = res.token;
-        this.httpService.setToken(this.token);
-        this.username = username;
-        this.read(this.username).subscribe(data => {
-          this.rol = data.rol;
-        });
+        if (this.token !== undefined) {
+          this.httpService.setToken(this.token);
+          this.username = username;
+          this.read(this.username).subscribe(data => {
+            this.rol = data.rol;
+          });
+        }
         return this.token !== undefined;
       },
       error => {
@@ -83,7 +85,7 @@ export class UserService {
   }
 
   update(user: User): Observable<User> {
-    return this.httpService.put(UserService.END_POINT + '/' + user.username, user).map(data => {
+    return this.httpService.patch(UserService.END_POINT + '/' + user.username, user).map(data => {
       return data;
     });
   }

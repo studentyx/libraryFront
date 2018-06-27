@@ -8,6 +8,10 @@
   <mat-form-field>
     <input matInput placeholder="{{propertyKey}}" [(ngModel)]="propertyValue">
   </mat-form-field>
-  <button (click)="saveProperty($event)">Save</button>
+  <mat-form-field *ngIf = "propertyKey === 'password'">
+    <input matInput placeholder="repeatPassword" [(ngModel)]="repeatPassword">
+    <mat-hint class="formError" *ngIf="nonEqualPasswords()">The passwords dont match</mat-hint>
+  </mat-form-field>
+  <button (click)="saveProperty($event)" [disabled]="validData() === false">Save</button>
   <button (click)="cancelProperty()">Cancel</button>
 </ng-template>
