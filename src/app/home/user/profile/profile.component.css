@@ -22,3 +22,7 @@ h1{
 :host ::ng-deep app-property mat-form-field{
     width: 70%;
 }
+
+:host ::ng-deep app-property .formError{
+    color: rgb(209, 9, 9);
+}
