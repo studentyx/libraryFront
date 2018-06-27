@@ -29,14 +29,9 @@ export class LoginComponent {
   login() {
     this.userService.login(this.usuario, this.password).subscribe(
       exito => {
-        if (exito) {
-          if (this.data != null) {
-            this.router.navigate(['home/libraryBooks', this.data.idRoom]);
-          }
-        } else {
+        if (exito === false) {
           this.showErrorAuthentication();
         }
-
       },
       error => {
         this.showErrorServer();
