@@ -42,13 +42,13 @@ export class LoginComponent {
 
   showErrorAuthentication(): void {
     this.snackBar.open("Autenticacion fallida", 'Error', {
-      duration: 8000
+      duration: 2000
     });
   }
 
   showErrorServer(): void {
     this.snackBar.open("Error de conexion con el servidor", 'Error', {
-      duration: 8000
+      duration: 2000
     });
   }
 }
