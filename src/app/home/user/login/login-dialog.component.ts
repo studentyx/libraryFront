@@ -31,10 +31,13 @@ export class LoginComponent {
       exito => {
         if (exito === false) {
           this.showErrorAuthentication();
+        }else{
+          this.dialogRef.close();
         }
       },
       error => {
         this.showErrorServer();
+        this.dialogRef.close();
       }
 
     );
