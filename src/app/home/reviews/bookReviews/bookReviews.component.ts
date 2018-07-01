@@ -63,6 +63,7 @@ export class BookReviewsComponent implements OnInit {
     postReview() {
         let review: Review = { book: this.book, text: this.reviewText };
         this.reviewService.create(review).subscribe();
+        this.reviewText = '';
     }
 
     reviewOwner(review: Review) {
@@ -80,12 +81,17 @@ export class BookReviewsComponent implements OnInit {
         this.reviewService.update(this.reviewEdit).subscribe(data => {
 
         });
-        this.reviewEdit = undefined;
+        this.finishEdit();
     }
 
     cancelReview(review: Review) {
         review.text = this.reviewText;
+        this.finishEdit();
+    }
+
+    private finishEdit(): void{
         this.reviewEdit = undefined;
+        this.reviewText = '';
     }
 
     deleteReview(review: Review) {
