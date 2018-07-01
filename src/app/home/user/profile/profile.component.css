@@ -20,7 +20,7 @@ h1{
 }
 
 :host ::ng-deep app-property mat-form-field{
-    width: 70%;
+    width: 65%;
 }
 
 :host ::ng-deep app-property .formError{
