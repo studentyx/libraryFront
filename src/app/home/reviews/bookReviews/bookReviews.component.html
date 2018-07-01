@@ -46,7 +46,7 @@
         <div *ngIf="reviewEdit !== undefined && reviewEdit === review; then reviewEditIf; else reviewShow"></div>
         <ng-template #reviewShow>
           <mat-card-content>
-            {{review.text}}
+            <span style="white-space:pre-wrap;">{{review.text}}</span>
           </mat-card-content>
           <mat-card-actions *ngIf="reviewOwner(review)">
 
