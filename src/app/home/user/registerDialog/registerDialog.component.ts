@@ -59,31 +59,28 @@ export class RegisterDialogComponent {
     }
 
     register() {
-        this.usernameAlreadyExist().subscribe(data=>{
-            if ( data ){
-                this.snackbarMessage( "The username is already taken" );
-            }else{
+        this.usernameAlreadyExist().subscribe(data => {
+            if (data) {
+                this.snackbarMessage("The username is already taken");
+            } else {
                 this.userService.create(this.user, this.recaptcha).subscribe(
-                    data=>{
-                        this.snackbarMessage( "User created successfully" );
+                    data => {
+                        this.snackbarMessage("User created successfully");
+                        this.dialogRef.close();
                     }
                 );
-                this.dialogRef.close();
             }
         });
     }
 
     usernameAlreadyExist(): Observable<boolean> {
-        return this.userService.read( this.user.username ).map(data => {
-
-            let user: User = data as User;
-            return user !== null;
-
+        return this.userService.read(this.user.username).map(data => {
+            return data !== null;
         });
     }
 
-    snackbarMessage( message: string ): void {
-        this.snackBar.open( message, 'Message', {
+    snackbarMessage(message: string): void {
+        this.snackBar.open(message, 'Message', {
             duration: 8000
         });
     }
