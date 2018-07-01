@@ -9,7 +9,7 @@ export class UserService {
   static END_POINT = '/users';
   static LOGIN_END_POINT = '/auth';
 
-  private token: string;
+  private token: string = null;
   private username: string;
   private rol: string;
 
@@ -17,7 +17,7 @@ export class UserService {
   }
 
   isAuthenticated(): boolean {
-    return this.token ? true : false;
+    return this.token !== null;
   }
 
   getLoginUser(): string {
@@ -25,7 +25,7 @@ export class UserService {
   }
 
   getRol(): string {
-    return this.rol;
+    return this.isAuthenticated() ? this.rol : undefined;
   }
 
   manageBookPrivileges() {
@@ -39,14 +39,15 @@ export class UserService {
     return this.httpService.post(UserService.LOGIN_END_POINT, user).map(
       res => {
         this.token = res.token;
-        if (this.token !== undefined) {
+
+        if (this.token !== null) {
           this.httpService.setToken(this.token);
           this.username = username;
           this.read(this.username).subscribe(data => {
             this.rol = data.rol;
           });
         }
-        return this.token !== undefined;
+        return this.token !== null;
       },
       error => {
         this.logout();
@@ -55,7 +56,7 @@ export class UserService {
   }
 
   logout(): void {
-    this.token = undefined;
+    this.token = null;
     this.httpService.setToken(this.token);
     this.username = undefined;
     this.rol = undefined;

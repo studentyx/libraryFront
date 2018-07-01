@@ -1,20 +1,20 @@
 <img src="../../assets/library.png" class="imgDialog">
-<h1 mat-dialog-title aling="center">Inicia sesión</h1>
+<h1 mat-dialog-title aling="center">Login</h1>
 <form [formGroup]="loginForm">
   <div mat-dialog-content>
     <mat-form-field>
-      <input matInput type="text" placeholder="Usuario" [(ngModel)]="usuario" [formControl]="userFormControl" required>
-      <mat-error *ngIf="userFormControl.invalid">Por favor ingresa tu usuario</mat-error>
+      <input matInput type="text" placeholder="Username" [(ngModel)]="usuario" [formControl]="userFormControl" required>
+      <mat-error *ngIf="userFormControl.invalid">Please enter your username</mat-error>
     </mat-form-field>
     <mat-form-field>
-      <input matInput type="password" placeholder="Contraseña" [(ngModel)]="password" [formControl]="passwordFormControl" required>
-      <mat-error *ngIf="passwordFormControl.invalid">Por favor ingresa tu contraseña</mat-error>
+      <input matInput type="password" placeholder="Password" [(ngModel)]="password" [formControl]="passwordFormControl" required>
+      <mat-error *ngIf="passwordFormControl.invalid">Please enter your password</mat-error>
     </mat-form-field>
 
   </div>
   <div>
     <div mat-dialog-actions fxLayout="row" fxLayoutAlign="space-around center">
-      <button mat-raised-button (click)="login()" color="primary" [mat-dialog-close]="this" [disabled]="loginForm.invalid">Iniciar sesión</button>
+      <button mat-raised-button (click)="login()" color="primary" [disabled]="loginForm.invalid">Login</button>
     </div>
   </div>
 </form>

@@ -48,7 +48,7 @@ export class BookReviewsComponent implements OnInit {
         let date = new Date(dt);
         let locale = "en-us";
         return date.toLocaleString(locale, { month: "long" })
-            + " " + date.getDay()
+            + " " + date.getDate()
             + ", " + date.getFullYear();
     }
 

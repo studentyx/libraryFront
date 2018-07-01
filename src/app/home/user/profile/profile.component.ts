@@ -18,7 +18,7 @@ export class ProfileComponent implements OnInit {
     }
 
     ngOnInit(): void {
-        if (this.userService.getLoginUser() === null) {
+        if (this.userService.getLoginUser() === undefined) {
             this.router.navigate(['home/libraryBooks']);
         } else {
             this.synchronize();
