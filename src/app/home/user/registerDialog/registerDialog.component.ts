@@ -60,15 +60,16 @@ export class RegisterDialogComponent {
 
     register() {
         this.usernameAlreadyExist().subscribe(data=>{
-
             if ( data ){
                 this.snackbarMessage( "The username is already taken" );
             }else{
-                this.userService.create(this.user, this.recaptcha).subscribe();
+                this.userService.create(this.user, this.recaptcha).subscribe(
+                    data=>{
+                        this.snackbarMessage( "User created successfully" );
+                    }
+                );
                 this.dialogRef.close();
-                this.snackbarMessage( "User created successfully" );
             }
-
         });
     }
 

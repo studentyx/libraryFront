@@ -30,7 +30,9 @@ export class BookDetailsComponent implements OnInit {
     }
 
     saveProperty(){
-        this.bookService.update(this.book).subscribe();
+        this.bookService.update(this.book).subscribe(data => {
+            this.book = data;
+        });
     }
 
 }

@@ -36,11 +36,16 @@ export class LoginComponent {
         }
       },
       error => {
-        this.showErrorServer();
-        this.dialogRef.close();
+        this.showLoginError();
       }
 
     );
+  }
+
+  showLoginError(): void{
+    this.snackBar.open("Error al iniciar sesión", 'Error', {
+      duration: 2000
+    });
   }
 
   showErrorAuthentication(): void {
@@ -49,9 +54,5 @@ export class LoginComponent {
     });
   }
 
-  showErrorServer(): void {
-    this.snackBar.open("Error de conexion con el servidor", 'Error', {
-      duration: 2000
-    });
-  }
+
 }
