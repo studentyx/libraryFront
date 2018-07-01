@@ -1,5 +1,4 @@
 import { Input, Output, Component, EventEmitter } from '@angular/core';
-import { MatTableDataSource } from '@angular/material';
 
 @Component({
   templateUrl: 'property.component.html',

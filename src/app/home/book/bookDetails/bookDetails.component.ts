@@ -1,6 +1,5 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from "@angular/router";
-import { MatPaginator, MatSort, MatTableDataSource } from '@angular/material';
 import { Book } from '../../shared/book.model';
 import { BookService } from '../book.service';
 import { UserService } from '../../shared/user.service';
